@@ -108,7 +108,7 @@ export const dinosaurs: Dinosaur[] = [
   },
   {
     id: 'pixel-rex',
-    name: 'Pixel Rex',
+    name: 'Dyno',
     swatch: '#1f2937',
     svg: `
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
