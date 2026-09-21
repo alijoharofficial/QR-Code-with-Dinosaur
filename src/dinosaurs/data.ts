@@ -108,25 +108,43 @@ export const dinosaurs: Dinosaur[] = [
   },
   {
     id: 'pixel-rex',
-    name: 'Pixel Rex',
+    name: 'Dyno',
     swatch: '#1f2937',
     svg: `
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
   ${SAFE_ZONE}
   <g fill="#1f2937">
-    <rect x="62" y="18" width="26" height="18" />
-    <rect x="80" y="32" width="16" height="8" />
-    <rect x="38" y="36" width="48" height="32" />
-    <rect x="76" y="52" width="8" height="9" />
-    <rect x="83" y="58" width="6" height="5" />
-    <rect x="26" y="46" width="14" height="12" />
-    <rect x="20" y="54" width="8" height="8" />
-    <rect x="16" y="58" width="6" height="6" />
-    <rect x="46" y="68" width="12" height="20" />
-    <rect x="40" y="84" width="10" height="8" />
-    <rect x="68" y="68" width="12" height="20" />
-    <rect x="80" y="84" width="8" height="8" />
-    <rect x="74" y="24" width="6" height="6" fill="#ffffff" />
+    <rect x="64" y="18" width="32" height="4" />
+    <rect x="60" y="22" width="40" height="4" />
+    <rect x="60" y="26" width="8" height="4" />
+    <rect x="72" y="26" width="28" height="4" />
+    <rect x="60" y="30" width="40" height="4" />
+    <rect x="60" y="34" width="40" height="4" />
+    <rect x="60" y="38" width="40" height="4" />
+    <rect x="60" y="42" width="32" height="4" />
+    <rect x="20" y="46" width="4" height="4" />
+    <rect x="56" y="46" width="20" height="4" />
+    <rect x="20" y="50" width="4" height="4" />
+    <rect x="48" y="50" width="28" height="4" />
+    <rect x="20" y="54" width="8" height="4" />
+    <rect x="44" y="54" width="40" height="4" />
+    <rect x="20" y="58" width="12" height="4" />
+    <rect x="40" y="58" width="36" height="4" />
+    <rect x="80" y="58" width="4" height="4" />
+    <rect x="20" y="62" width="56" height="4" />
+    <rect x="20" y="66" width="56" height="4" />
+    <rect x="24" y="70" width="48" height="4" />
+    <rect x="28" y="74" width="44" height="4" />
+    <rect x="32" y="78" width="36" height="4" />
+    <rect x="36" y="82" width="28" height="4" />
+    <rect x="40" y="86" width="12" height="4" />
+    <rect x="56" y="86" width="8" height="4" />
+    <rect x="40" y="90" width="8" height="4" />
+    <rect x="60" y="90" width="4" height="4" />
+    <rect x="40" y="94" width="4" height="4" />
+    <rect x="60" y="94" width="4" height="4" />
+    <rect x="40" y="98" width="8" height="4" />
+    <rect x="60" y="98" width="8" height="4" />
   </g>
 </svg>`,
   },
