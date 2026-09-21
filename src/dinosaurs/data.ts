@@ -106,6 +106,30 @@ export const dinosaurs: Dinosaur[] = [
   </g>
 </svg>`,
   },
+  {
+    id: 'pixel-rex',
+    name: 'Pixel Rex',
+    swatch: '#1f2937',
+    svg: `
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+  ${SAFE_ZONE}
+  <g fill="#1f2937">
+    <rect x="62" y="18" width="26" height="18" />
+    <rect x="80" y="32" width="16" height="8" />
+    <rect x="38" y="36" width="48" height="32" />
+    <rect x="76" y="52" width="8" height="9" />
+    <rect x="83" y="58" width="6" height="5" />
+    <rect x="26" y="46" width="14" height="12" />
+    <rect x="20" y="54" width="8" height="8" />
+    <rect x="16" y="58" width="6" height="6" />
+    <rect x="46" y="68" width="12" height="20" />
+    <rect x="40" y="84" width="10" height="8" />
+    <rect x="68" y="68" width="12" height="20" />
+    <rect x="80" y="84" width="8" height="8" />
+    <rect x="74" y="24" width="6" height="6" fill="#ffffff" />
+  </g>
+</svg>`,
+  },
 ]
 
 export const defaultDinosaurId = dinosaurs[0].id
