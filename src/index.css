@@ -1,0 +1,117 @@
+@import 'tailwindcss';
+
+:root {
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --app-bg: #f7faf7;
+  --app-surface: #ffffff;
+  --app-surface-muted: #eef3ef;
+  --app-border: #dbe5dd;
+  --app-text: #14231a;
+  --app-text-muted: #5b6a60;
+  --app-accent: #16a34a;
+  --app-accent-hover: #15803d;
+  --app-accent-contrast: #ffffff;
+  --app-ring: #16a34a;
+  --app-shadow-soft:
+    0 1px 2px rgba(20, 35, 26, 0.04), 0 8px 24px -8px rgba(20, 35, 26, 0.14);
+}
+
+:root[data-theme='dark'] {
+  --app-bg: #0e1712;
+  --app-surface: #16211a;
+  --app-surface-muted: #1c2921;
+  --app-border: #293b30;
+  --app-text: #edf5ef;
+  --app-text-muted: #9db2a5;
+  --app-accent: #4ade80;
+  --app-accent-hover: #6ee7a4;
+  --app-accent-contrast: #0e1712;
+  --app-ring: #4ade80;
+  --app-shadow-soft:
+    0 1px 2px rgba(0, 0, 0, 0.24), 0 8px 24px -8px rgba(0, 0, 0, 0.55);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --app-bg: #0e1712;
+    --app-surface: #16211a;
+    --app-surface-muted: #1c2921;
+    --app-border: #293b30;
+    --app-text: #edf5ef;
+    --app-text-muted: #9db2a5;
+    --app-accent: #4ade80;
+    --app-accent-hover: #6ee7a4;
+    --app-accent-contrast: #0e1712;
+    --app-ring: #4ade80;
+    --app-shadow-soft:
+      0 1px 2px rgba(0, 0, 0, 0.24), 0 8px 24px -8px rgba(0, 0, 0, 0.55);
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --color-bg: var(--app-bg);
+  --color-surface: var(--app-surface);
+  --color-surface-muted: var(--app-surface-muted);
+  --color-border: var(--app-border);
+  --color-text: var(--app-text);
+  --color-muted: var(--app-text-muted);
+  --color-accent: var(--app-accent);
+  --color-accent-hover: var(--app-accent-hover);
+  --color-accent-contrast: var(--app-accent-contrast);
+  --color-ring: var(--app-ring);
+}
+
+html,
+body {
+  background: var(--app-bg);
+}
+
+body {
+  color: var(--app-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+:focus-visible {
+  outline: 2px solid var(--app-ring);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@keyframes qr-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.qr-fade-in {
+  animation: qr-fade-in 0.4s ease-out;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pop-in {
+  animation: pop-in 0.3s ease-out;
+}
