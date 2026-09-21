@@ -16,7 +16,7 @@ export function SiteHeader({ theme, onToggleTheme }: SiteHeaderProps) {
         <span className="text-2xl" aria-hidden="true">
           🦖
         </span>
-        QR Code Dinosaur
+        QR Code Generator
       </a>
       <ThemeToggle theme={theme} onToggle={onToggleTheme} />
     </header>

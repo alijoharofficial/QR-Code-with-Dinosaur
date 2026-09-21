@@ -65,6 +65,14 @@ export const colorThemes: ColorTheme[] = [
     background: '#0f172a',
     swatch: '#0f172a',
   },
+  {
+    id: 'orange',
+    name: 'Orange',
+    dots: '#ea580c',
+    corners: '#9a3412',
+    background: '#ffffff',
+    swatch: '#ea580c',
+  },
 ]
 
 export const defaultColorThemeId = colorThemes[1].id

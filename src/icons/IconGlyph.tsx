@@ -1,9 +1,9 @@
-interface DinoIconProps {
+interface IconGlyphProps {
   svg: string
   className?: string
 }
 
-export function DinoIcon({ svg, className }: DinoIconProps) {
+export function IconGlyph({ svg, className }: IconGlyphProps) {
   return (
     <span
       className={className}
