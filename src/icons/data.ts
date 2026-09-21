@@ -85,34 +85,38 @@ const tiger: IconOption = {
   name: 'Tiger',
   svg: `
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-  ${SAFE_ZONE}
-  <g fill="#1f2937">
-    <polygon points="14,58 30,42 27,66 36,58" />
-    <polygon points="106,58 90,42 93,66 84,58" />
-    <circle cx="30" cy="26" r="15" />
-    <circle cx="90" cy="26" r="15" />
-    <ellipse cx="60" cy="58" rx="35" ry="32" />
-  </g>
+  <circle cx="60" cy="60" r="54" fill="#1f2937" />
   <g fill="#ffffff">
-    <circle cx="30" cy="28" r="6.5" />
-    <circle cx="90" cy="28" r="6.5" />
-    <polygon points="34,33 50,33 42,46" />
-    <polygon points="86,33 70,33 78,46" />
-    <polygon points="54,22 66,22 60,40" />
-  </g>
-  <g fill="#ffffff">
-    <ellipse cx="46" cy="52" rx="9" ry="7" />
-    <ellipse cx="74" cy="52" rx="9" ry="7" />
+    <polygon points="28,40 42,14 52,42" />
+    <polygon points="92,40 78,14 68,42" />
+    <ellipse cx="60" cy="64" rx="33" ry="30" />
   </g>
   <g fill="#1f2937">
-    <circle cx="48" cy="53" r="3.4" />
-    <circle cx="72" cy="53" r="3.4" />
+    <polygon points="34,22 42,14 46,26" />
+    <polygon points="86,22 78,14 74,26" />
+    <polygon points="57,26 63,26 62,46 58,46" />
+    <polygon points="43,32 50,29 52,48 46,48" />
+    <polygon points="77,32 70,29 68,48 74,48" />
   </g>
-  <ellipse cx="60" cy="74" rx="24" ry="18" fill="#ffffff" />
-  <polygon points="53,66 67,66 60,75" fill="#1f2937" />
-  <ellipse cx="60" cy="86" rx="18" ry="9" fill="#1f2937" />
-  <polygon points="49,80 56,80 52,92" fill="#ffffff" />
-  <polygon points="71,80 64,80 68,92" fill="#ffffff" />
+  <g stroke="#1f2937" stroke-width="2.2" stroke-linecap="round">
+    <line x1="24" y1="64" x2="33" y2="62" />
+    <line x1="23" y1="70" x2="32" y2="70" />
+    <line x1="24" y1="76" x2="33" y2="78" />
+    <line x1="96" y1="64" x2="87" y2="62" />
+    <line x1="97" y1="70" x2="88" y2="70" />
+    <line x1="96" y1="76" x2="87" y2="78" />
+  </g>
+  <g fill="#1f2937">
+    <ellipse cx="48" cy="58" rx="6" ry="5" />
+    <ellipse cx="72" cy="58" rx="6" ry="5" />
+  </g>
+  <g fill="#ffffff">
+    <circle cx="49.5" cy="56.5" r="1.6" />
+    <circle cx="73.5" cy="56.5" r="1.6" />
+  </g>
+  <polygon points="56,66 64,66 60,72" fill="#1f2937" />
+  <path d="M50,76 Q60,84 70,76" fill="none" stroke="#1f2937" stroke-width="2.4" stroke-linecap="round" />
+  <circle cx="60" cy="90" r="7" fill="#ffffff" stroke="#1f2937" stroke-width="2.2" />
 </svg>`,
 }
 
