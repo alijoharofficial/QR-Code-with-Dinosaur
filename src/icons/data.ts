@@ -84,32 +84,35 @@ const tiger: IconOption = {
   id: 'tiger',
   name: 'Tiger',
   svg: `
-<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
   ${SAFE_ZONE}
   <g fill="#1f2937">
-    <rect x="20" y="18" width="18" height="16" />
-    <rect x="82" y="18" width="18" height="16" />
-    <rect x="24" y="30" width="72" height="54" />
+    <polygon points="14,58 30,42 27,66 36,58" />
+    <polygon points="106,58 90,42 93,66 84,58" />
+    <circle cx="30" cy="26" r="15" />
+    <circle cx="90" cy="26" r="15" />
+    <ellipse cx="60" cy="58" rx="35" ry="32" />
   </g>
   <g fill="#ffffff">
-    <rect x="24" y="22" width="8" height="8" />
-    <rect x="88" y="22" width="8" height="8" />
-    <rect x="40" y="32" width="4" height="8" />
-    <rect x="76" y="32" width="4" height="8" />
-    <rect x="58" y="30" width="4" height="10" />
-    <rect x="36" y="62" width="48" height="22" />
-    <rect x="40" y="46" width="12" height="7" />
-    <rect x="68" y="46" width="12" height="7" />
-    <rect x="44" y="76" width="32" height="8" />
+    <circle cx="30" cy="28" r="6.5" />
+    <circle cx="90" cy="28" r="6.5" />
+    <polygon points="34,33 50,33 42,46" />
+    <polygon points="86,33 70,33 78,46" />
+    <polygon points="54,22 66,22 60,40" />
+  </g>
+  <g fill="#ffffff">
+    <ellipse cx="46" cy="52" rx="9" ry="7" />
+    <ellipse cx="74" cy="52" rx="9" ry="7" />
   </g>
   <g fill="#1f2937">
-    <rect x="44" y="47" width="4" height="5" />
-    <rect x="72" y="47" width="4" height="5" />
-    <rect x="54" y="62" width="12" height="7" />
-    <rect x="58" y="76" width="4" height="8" />
-    <rect x="46" y="76" width="4" height="6" />
-    <rect x="70" y="76" width="4" height="6" />
+    <circle cx="48" cy="53" r="3.4" />
+    <circle cx="72" cy="53" r="3.4" />
   </g>
+  <ellipse cx="60" cy="74" rx="24" ry="18" fill="#ffffff" />
+  <polygon points="53,66 67,66 60,75" fill="#1f2937" />
+  <ellipse cx="60" cy="86" rx="18" ry="9" fill="#1f2937" />
+  <polygon points="49,80 56,80 52,92" fill="#ffffff" />
+  <polygon points="71,80 64,80 68,92" fill="#ffffff" />
 </svg>`,
 }
 
