@@ -62,49 +62,20 @@ const monkey: IconOption = {
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
   ${SAFE_ZONE}
   <g fill="#1f2937">
-    <rect x="52" y="20" width="20" height="4" />
-    <rect x="44" y="24" width="40" height="4" />
-    <rect x="36" y="28" width="52" height="4" />
-    <rect x="36" y="32" width="52" height="4" />
-    <rect x="32" y="36" width="36" height="4" />
-    <rect x="84" y="36" width="4" height="4" />
-    <rect x="32" y="40" width="60" height="4" />
-    <rect x="32" y="44" width="32" height="4" />
-    <rect x="68" y="44" width="24" height="4" />
-    <rect x="28" y="48" width="28" height="4" />
-    <rect x="64" y="48" width="4" height="4" />
-    <rect x="88" y="48" width="8" height="4" />
-    <rect x="24" y="52" width="12" height="4" />
-    <rect x="40" y="52" width="60" height="4" />
-    <rect x="20" y="56" width="32" height="4" />
-    <rect x="56" y="56" width="20" height="4" />
-    <rect x="80" y="56" width="20" height="4" />
-    <rect x="28" y="60" width="4" height="4" />
-    <rect x="36" y="60" width="4" height="4" />
-    <rect x="44" y="60" width="8" height="4" />
-    <rect x="56" y="60" width="20" height="4" />
-    <rect x="80" y="60" width="16" height="4" />
-    <rect x="28" y="64" width="8" height="4" />
-    <rect x="44" y="64" width="12" height="4" />
-    <rect x="64" y="64" width="4" height="4" />
-    <rect x="84" y="64" width="12" height="4" />
-    <rect x="32" y="68" width="32" height="4" />
-    <rect x="88" y="68" width="8" height="4" />
-    <rect x="36" y="72" width="24" height="4" />
-    <rect x="64" y="72" width="4" height="4" />
-    <rect x="92" y="72" width="4" height="4" />
-    <rect x="36" y="76" width="24" height="4" />
-    <rect x="64" y="76" width="12" height="4" />
-    <rect x="84" y="76" width="12" height="4" />
-    <rect x="36" y="80" width="24" height="4" />
-    <rect x="76" y="80" width="8" height="4" />
-    <rect x="92" y="80" width="4" height="4" />
-    <rect x="36" y="84" width="28" height="4" />
-    <rect x="88" y="84" width="4" height="4" />
-    <rect x="40" y="88" width="36" height="4" />
-    <rect x="80" y="88" width="8" height="4" />
-    <rect x="48" y="92" width="36" height="4" />
-    <rect x="56" y="96" width="16" height="4" />
+    <rect x="44" y="18" width="32" height="10" />
+    <rect x="34" y="28" width="52" height="6" />
+    <rect x="24" y="52" width="14" height="16" />
+    <rect x="36" y="36" width="48" height="50" />
+    <rect x="40" y="54" width="40" height="10" />
+  </g>
+  <g fill="#ffffff">
+    <rect x="34" y="34" width="52" height="2" />
+    <rect x="28" y="56" width="6" height="8" />
+    <rect x="44" y="57" width="10" height="5" />
+    <rect x="66" y="57" width="10" height="5" />
+    <rect x="36" y="82" width="6" height="4" />
+    <rect x="78" y="82" width="6" height="4" />
+    <rect x="48" y="72" width="24" height="8" />
   </g>
 </svg>`,
 }
