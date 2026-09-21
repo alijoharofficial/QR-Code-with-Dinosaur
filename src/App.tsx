@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react'
+import { BrandMark } from './components/BrandMark'
 import { ColorThemePicker } from './components/ColorThemePicker'
 import { FaqSection } from './components/FaqSection'
 import { Hero } from './components/Hero'
 import { IconPicker } from './components/IconPicker'
 import { QrPreview } from './components/QrPreview'
+import { QrShapePicker } from './components/QrShapePicker'
 import { SiteHeader } from './components/SiteHeader'
 import { StylePicker } from './components/StylePicker'
 import { UrlForm } from './components/UrlForm'
@@ -12,6 +14,7 @@ import { useTheme } from './hooks/useTheme'
 import { defaultIconId, findIcon, toDataUri } from './icons/data'
 import { colorThemes, defaultColorThemeId } from './lib/colorThemes'
 import { defaultDotStyleId, dotStyles } from './lib/dotStyles'
+import { defaultQrShapeId, qrShapes } from './lib/qrShapes'
 import { normalizeUrl } from './lib/url'
 import { useQrCode } from './lib/useQrCode'
 
@@ -25,6 +28,7 @@ function App() {
   const [customLogo, setCustomLogo] = useState<string | null>(null)
   const [themeId, setThemeId] = useState(defaultColorThemeId)
   const [styleId, setStyleId] = useState(defaultDotStyleId)
+  const [qrShapeId, setQrShapeId] = useState(defaultQrShapeId)
 
   const debouncedInput = useDebouncedValue(rawInput, 400)
 
@@ -71,6 +75,7 @@ function App() {
   const colorTheme =
     colorThemes.find((t) => t.id === themeId) ?? colorThemes[0]
   const dotStyle = dotStyles.find((s) => s.id === styleId) ?? dotStyles[0]
+  const qrShape = qrShapes.find((s) => s.id === qrShapeId) ?? qrShapes[0]
   const image = customLogo ?? toDataUri(icon?.svg ?? '')
 
   const { containerRef, qrRef } = useQrCode({
@@ -78,6 +83,7 @@ function App() {
     image,
     colorTheme,
     dotStyle,
+    qrShape,
   })
 
   const isPlaceholder = !rawInput.trim()
@@ -105,6 +111,7 @@ function App() {
               onUpload={setCustomLogo}
             />
             <StylePicker selectedId={styleId} onSelect={setStyleId} />
+            <QrShapePicker selectedId={qrShapeId} onSelect={setQrShapeId} />
             <ColorThemePicker selectedId={themeId} onSelect={setThemeId} />
           </div>
 
@@ -119,8 +126,9 @@ function App() {
         <FaqSection />
       </main>
 
-      <footer className="border-t border-border py-8 text-center text-sm text-muted">
-        Made with 🦖 &middot; QR Code Generator runs entirely in your browser
+      <footer className="flex items-center justify-center gap-2 border-t border-border py-8 text-center text-sm text-muted">
+        <BrandMark className="h-4 w-4" animated={false} />
+        QR Code Generator runs entirely in your browser
       </footer>
     </div>
   )
