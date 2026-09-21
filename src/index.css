@@ -115,3 +115,31 @@ body {
 .pop-in {
   animation: pop-in 0.3s ease-out;
 }
+
+@keyframes qr-scan {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(27px);
+    opacity: 0;
+  }
+}
+
+.brand-scan-line {
+  animation: qr-scan 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-scan-line {
+    animation: none;
+    opacity: 0;
+  }
+}

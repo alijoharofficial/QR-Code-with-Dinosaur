@@ -1,4 +1,5 @@
 import type { Theme } from '../hooks/useTheme'
+import { BrandMark } from './BrandMark'
 import { ThemeToggle } from './ThemeToggle'
 
 interface SiteHeaderProps {
@@ -13,9 +14,7 @@ export function SiteHeader({ theme, onToggleTheme }: SiteHeaderProps) {
         href="#top"
         className="flex items-center gap-2 text-lg font-bold tracking-tight text-text"
       >
-        <span className="text-2xl" aria-hidden="true">
-          🦖
-        </span>
+        <BrandMark className="h-7 w-7 text-accent" />
         QR Code Generator
       </a>
       <ThemeToggle theme={theme} onToggle={onToggleTheme} />

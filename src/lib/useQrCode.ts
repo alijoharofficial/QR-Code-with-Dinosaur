@@ -2,12 +2,14 @@ import QRCodeStyling from 'qr-code-styling'
 import { useEffect, useRef, useState } from 'react'
 import type { ColorTheme } from './colorThemes'
 import type { DotStyle } from './dotStyles'
+import type { QrShape } from './qrShapes'
 
 interface UseQrCodeOptions {
   data: string
   image: string
   colorTheme: ColorTheme
   dotStyle: DotStyle
+  qrShape: QrShape
   size?: number
 }
 
@@ -24,10 +26,12 @@ function buildStyleOptions(
   image: string,
   colorTheme: ColorTheme,
   dotStyle: DotStyle,
+  qrShape: QrShape,
 ) {
   return {
     data,
     image,
+    shape: qrShape.shape,
     dotsOptions: { type: dotStyle.dots, ...colorOrGradient(colorTheme.dots) },
     cornersSquareOptions: {
       type: dotStyle.cornerSquare,
@@ -46,6 +50,7 @@ export function useQrCode({
   image,
   colorTheme,
   dotStyle,
+  qrShape,
   size = QR_SIZE,
 }: UseQrCodeOptions) {
   const containerRef = useRef<HTMLDivElement | null>(null)
@@ -63,7 +68,7 @@ export function useQrCode({
           imageSize: 0.42,
           margin: 6,
         },
-        ...buildStyleOptions(data, image, colorTheme, dotStyle),
+        ...buildStyleOptions(data, image, colorTheme, dotStyle, qrShape),
       }),
   )
   const qrCodeRef = useRef(qrCode)
@@ -76,8 +81,8 @@ export function useQrCode({
   }, [])
 
   useEffect(() => {
-    qrCode.update(buildStyleOptions(data, image, colorTheme, dotStyle))
-  }, [qrCode, data, image, colorTheme, dotStyle])
+    qrCode.update(buildStyleOptions(data, image, colorTheme, dotStyle, qrShape))
+  }, [qrCode, data, image, colorTheme, dotStyle, qrShape])
 
   return { containerRef, qrRef: qrCodeRef }
 }
