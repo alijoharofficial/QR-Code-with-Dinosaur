@@ -19,7 +19,7 @@ export function QrPreview({
   const [copyState, setCopyState] = useState<CopyState>('idle')
 
   const handleDownload = (extension: 'png' | 'svg') => {
-    qrRef.current?.download({ name: 'qr-code-dinosaur', extension })
+    qrRef.current?.download({ name: 'qr-code', extension })
   }
 
   const handleCopy = async () => {
@@ -48,7 +48,7 @@ export function QrPreview({
 
       <p className="mt-4 max-w-full truncate text-sm text-muted" title={displayUrl}>
         {isPlaceholder ? (
-          <span className="italic">Sample preview &mdash; {displayUrl}</span>
+          <span className="italic">Sample preview: {displayUrl}</span>
         ) : (
           displayUrl
         )}

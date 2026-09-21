@@ -5,14 +5,14 @@ const faqs = [
       'Yes. There is no signup, no watermark, and no limit on how many codes you can generate.',
   },
   {
-    question: 'Will the QR code still scan with a dinosaur on it?',
+    question: 'Will the QR code still scan with a logo or icon on it?',
     answer:
-      'Every code is generated with high error-correction (level H), and the dinosaur sits in a rounded white safe zone, so scanners can read through the missing data.',
+      'Every code is generated with high error-correction (level H), and the center image sits in a rounded white safe zone, so scanners can read through the missing data.',
   },
   {
-    question: 'Does my URL get sent anywhere?',
+    question: 'Does my URL or uploaded logo get sent anywhere?',
     answer:
-      'No. Everything — encoding, styling, and the dinosaur artwork — happens locally in your browser. Nothing is uploaded.',
+      'No. Everything, encoding, styling, and your uploaded logo, happens locally in your browser. Nothing is uploaded to a server.',
   },
   {
     question: 'What formats can I download?',

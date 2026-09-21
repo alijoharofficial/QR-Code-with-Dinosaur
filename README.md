@@ -1,22 +1,24 @@
-# 🦖 QR Code Dinosaur
+# QR Code Generator
 
-A free, single-page tool that turns any URL into a scannable QR code with a
-dinosaur in the middle. No signup, no backend — everything runs client-side
-in your browser.
+A free, single-page tool that turns any URL into a scannable, customizable QR
+code. No signup, no backend, everything runs client-side in your browser.
 
 ## Features
 
 - Paste a URL (or start typing) and get a live, debounced QR preview
-- 4 built-in dinosaurs (Cute T-Rex, T-Rex, Stegosaurus, Brontosaurus) as
-  inline, bundled SVGs — no external images or CDNs
-- 5 one-click color themes (Classic Black, Dino Green, Sunset, Ocean,
-  Midnight)
+- Center icon library: animals (Dyno, Monkey, Tiger, all pixel-art style) and
+  social icons (WhatsApp, Instagram, Facebook, X), all bundled inline SVGs,
+  no external images or CDNs
+- Upload your own logo to use as the center image
+- Dot style presets: Square, Rounded, Blur, Classy
+- 6 one-click color themes (Classic Black, Dino Green, Sunset, Ocean,
+  Midnight, Orange)
 - High error-correction (level H) QR encoding so the code still scans
-  reliably with the dinosaur covering the center
+  reliably with a logo or icon covering the center
 - Download as PNG or SVG, or copy the image straight to your clipboard
 - Light/dark mode, respecting your system preference and remembered via
   `localStorage`
-- Fully static, fully offline after the initial page load — no server, no
+- Fully static, fully offline after the initial page load. No server, no
   database, no tracking, no ads
 
 ## Tech stack
@@ -48,6 +50,13 @@ Netlify, GitHub Pages, or any static host.
 npm run preview   # preview the production build locally
 ```
 
+## Deploying to GitHub Pages
+
+This repo includes `.github/workflows/deploy-pages.yml`, which builds the
+app and publishes `dist/` on every push to `main`. In the repository's
+**Settings > Pages > Build and deployment**, set **Source** to
+**GitHub Actions** once, and it deploys automatically after that.
+
 ## Linting & type-checking
 
 ```bash
@@ -60,7 +69,7 @@ npx tsc -b         # type-check
 ```
 src/
   components/     UI components (form, previews, pickers, header, FAQ)
-  dinosaurs/      Bundled dinosaur SVG artwork + icon renderer
+  icons/          Bundled icon SVG artwork (animals, social) + renderer
   hooks/          Theme and debounce hooks
-  lib/            URL validation, color themes, and the QR generation hook
+  lib/            URL validation, color themes, dot styles, QR generation
 ```

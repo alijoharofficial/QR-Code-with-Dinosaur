@@ -1,11 +1,13 @@
 import QRCodeStyling from 'qr-code-styling'
 import { useEffect, useRef, useState } from 'react'
 import type { ColorTheme } from './colorThemes'
+import type { DotStyle } from './dotStyles'
 
 interface UseQrCodeOptions {
   data: string
   image: string
   colorTheme: ColorTheme
+  dotStyle: DotStyle
   size?: number
 }
 
@@ -17,17 +19,22 @@ function colorOrGradient(value: ColorTheme['dots']) {
     : { color: undefined, gradient: value }
 }
 
-function buildStyleOptions(data: string, image: string, colorTheme: ColorTheme) {
+function buildStyleOptions(
+  data: string,
+  image: string,
+  colorTheme: ColorTheme,
+  dotStyle: DotStyle,
+) {
   return {
     data,
     image,
-    dotsOptions: { type: 'rounded' as const, ...colorOrGradient(colorTheme.dots) },
+    dotsOptions: { type: dotStyle.dots, ...colorOrGradient(colorTheme.dots) },
     cornersSquareOptions: {
-      type: 'extra-rounded' as const,
+      type: dotStyle.cornerSquare,
       ...colorOrGradient(colorTheme.corners),
     },
     cornersDotOptions: {
-      type: 'dot' as const,
+      type: dotStyle.cornerDot,
       ...colorOrGradient(colorTheme.corners),
     },
     backgroundOptions: { color: colorTheme.background },
@@ -38,6 +45,7 @@ export function useQrCode({
   data,
   image,
   colorTheme,
+  dotStyle,
   size = QR_SIZE,
 }: UseQrCodeOptions) {
   const containerRef = useRef<HTMLDivElement | null>(null)
@@ -55,7 +63,7 @@ export function useQrCode({
           imageSize: 0.42,
           margin: 6,
         },
-        ...buildStyleOptions(data, image, colorTheme),
+        ...buildStyleOptions(data, image, colorTheme, dotStyle),
       }),
   )
   const qrCodeRef = useRef(qrCode)
@@ -68,8 +76,8 @@ export function useQrCode({
   }, [])
 
   useEffect(() => {
-    qrCode.update(buildStyleOptions(data, image, colorTheme))
-  }, [qrCode, data, image, colorTheme])
+    qrCode.update(buildStyleOptions(data, image, colorTheme, dotStyle))
+  }, [qrCode, data, image, colorTheme, dotStyle])
 
   return { containerRef, qrRef: qrCodeRef }
 }

@@ -1,26 +1,30 @@
 import { useMemo, useState } from 'react'
 import { ColorThemePicker } from './components/ColorThemePicker'
-import { DinosaurPicker } from './components/DinosaurPicker'
 import { FaqSection } from './components/FaqSection'
 import { Hero } from './components/Hero'
+import { IconPicker } from './components/IconPicker'
 import { QrPreview } from './components/QrPreview'
 import { SiteHeader } from './components/SiteHeader'
+import { StylePicker } from './components/StylePicker'
 import { UrlForm } from './components/UrlForm'
-import { defaultDinosaurId, dinosaurs, toDataUri } from './dinosaurs/data'
 import { useDebouncedValue } from './hooks/useDebouncedValue'
 import { useTheme } from './hooks/useTheme'
+import { defaultIconId, findIcon, toDataUri } from './icons/data'
 import { colorThemes, defaultColorThemeId } from './lib/colorThemes'
+import { defaultDotStyleId, dotStyles } from './lib/dotStyles'
 import { normalizeUrl } from './lib/url'
 import { useQrCode } from './lib/useQrCode'
 
-const PLACEHOLDER_URL = 'https://qr-code-dinosaur.app'
+const PLACEHOLDER_URL = 'https://qr-code-generator.app'
 
 function App() {
   const { theme, toggleTheme } = useTheme()
 
   const [rawInput, setRawInput] = useState('')
-  const [dinoId, setDinoId] = useState(defaultDinosaurId)
+  const [iconId, setIconId] = useState(defaultIconId)
+  const [customLogo, setCustomLogo] = useState<string | null>(null)
   const [themeId, setThemeId] = useState(defaultColorThemeId)
+  const [styleId, setStyleId] = useState(defaultDotStyleId)
 
   const debouncedInput = useDebouncedValue(rawInput, 400)
 
@@ -58,14 +62,22 @@ function App() {
     }
   }
 
-  const dino = dinosaurs.find((d) => d.id === dinoId) ?? dinosaurs[0]
+  const handleSelectIcon = (id: string) => {
+    setIconId(id)
+    setCustomLogo(null)
+  }
+
+  const icon = findIcon(iconId)
   const colorTheme =
     colorThemes.find((t) => t.id === themeId) ?? colorThemes[0]
+  const dotStyle = dotStyles.find((s) => s.id === styleId) ?? dotStyles[0]
+  const image = customLogo ?? toDataUri(icon?.svg ?? '')
 
   const { containerRef, qrRef } = useQrCode({
     data: qrValue,
-    image: toDataUri(dino.svg),
+    image,
     colorTheme,
+    dotStyle,
   })
 
   const isPlaceholder = !rawInput.trim()
@@ -85,7 +97,14 @@ function App() {
               onSubmit={handleGenerate}
               error={errorMessage}
             />
-            <DinosaurPicker selectedId={dinoId} onSelect={setDinoId} />
+            <IconPicker
+              selectedId={iconId}
+              isCustom={customLogo !== null}
+              customPreview={customLogo}
+              onSelect={handleSelectIcon}
+              onUpload={setCustomLogo}
+            />
+            <StylePicker selectedId={styleId} onSelect={setStyleId} />
             <ColorThemePicker selectedId={themeId} onSelect={setThemeId} />
           </div>
 
@@ -101,7 +120,7 @@ function App() {
       </main>
 
       <footer className="border-t border-border py-8 text-center text-sm text-muted">
-        Made with 🦖 &middot; QR Code Dinosaur runs entirely in your browser
+        Made with 🦖 &middot; QR Code Generator runs entirely in your browser
       </footer>
     </div>
   )
