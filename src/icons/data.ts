@@ -86,34 +86,19 @@ const tiger: IconOption = {
   svg: `
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
   ${SAFE_ZONE}
-  <g fill="#1f2937">
-    <circle cx="30" cy="26" r="14" />
-    <circle cx="90" cy="26" r="14" />
-  </g>
-  <g fill="#ffffff">
-    <polygon points="26,18 34,18 30,34" />
-    <polygon points="94,18 86,18 90,34" />
-  </g>
-  <path d="M18,50 Q10,75 22,96 Q35,88 40,100 Q60,112 80,100 Q85,88 98,96 Q110,75 102,50"
-        fill="none" stroke="#1f2937" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
-  <g fill="none" stroke="#1f2937" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-    <line x1="44" y1="30" x2="76" y2="30" />
-    <line x1="60" y1="26" x2="60" y2="48" />
-    <path d="M34,54 Q60,42 86,54" />
-  </g>
-  <path d="M36,60 Q46,50 58,60 Q46,68 36,60 Z" fill="#ffffff" stroke="#1f2937" stroke-width="6" stroke-linejoin="round" />
-  <path d="M62,60 Q74,50 84,60 Q74,68 62,60 Z" fill="#ffffff" stroke="#1f2937" stroke-width="6" stroke-linejoin="round" />
-  <polygon points="44,58 52,58 48,65" fill="#1f2937" />
-  <polygon points="68,58 76,58 72,65" fill="#1f2937" />
-  <path d="M48,76 Q60,72 72,76 Q66,90 60,94 Q54,90 48,76 Z" fill="#1f2937" />
-  <path d="M40,96 Q50,108 60,98 Q70,108 80,96" fill="none" stroke="#1f2937" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-  <g stroke="#1f2937" stroke-width="5" stroke-linecap="round">
-    <line x1="8" y1="70" x2="22" y2="72" />
-    <line x1="6" y1="80" x2="22" y2="82" />
-    <line x1="8" y1="90" x2="24" y2="90" />
-    <line x1="112" y1="70" x2="98" y2="72" />
-    <line x1="114" y1="80" x2="98" y2="82" />
-    <line x1="112" y1="90" x2="96" y2="90" />
+  <g fill="none" stroke="#1f2937" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18,46 34,16 46,42" />
+    <polyline points="102,46 86,16 74,42" />
+    <polyline points="18,46 10,68 22,86 33,100 48,106 60,112 72,106 87,100 98,86 110,68 102,46" />
+    <line x1="60" y1="36" x2="60" y2="58" />
+    <line x1="48" y1="40" x2="72" y2="40" />
+    <line x1="50" y1="47" x2="70" y2="47" />
+    <line x1="52" y1="54" x2="68" y2="54" />
+    <polygon points="34,60 44,56 56,56 60,60 56,64 44,64" />
+    <polygon points="86,60 76,56 64,56 60,60 64,64 76,64" />
+    <polygon points="55,68 60,64 65,68 60,76" />
+    <polyline points="44,90 60,80 76,90" />
+    <polyline points="44,90 60,102 76,90" />
   </g>
 </svg>`,
 }
