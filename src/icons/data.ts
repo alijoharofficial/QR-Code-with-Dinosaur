@@ -59,24 +59,18 @@ const monkey: IconOption = {
   id: 'monkey',
   name: 'Monkey',
   svg: `
-<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
   ${SAFE_ZONE}
-  <g fill="#1f2937">
-    <rect x="44" y="18" width="32" height="10" />
-    <rect x="34" y="28" width="52" height="6" />
-    <rect x="24" y="52" width="14" height="16" />
-    <rect x="36" y="36" width="48" height="50" />
-    <rect x="40" y="54" width="40" height="10" />
-  </g>
-  <g fill="#ffffff">
-    <rect x="34" y="34" width="52" height="2" />
-    <rect x="28" y="56" width="6" height="8" />
-    <rect x="44" y="57" width="10" height="5" />
-    <rect x="66" y="57" width="10" height="5" />
-    <rect x="36" y="82" width="6" height="4" />
-    <rect x="78" y="82" width="6" height="4" />
-    <rect x="48" y="72" width="24" height="8" />
-  </g>
+  <circle cx="24" cy="54" r="14" fill="#1f2937" />
+  <circle cx="96" cy="54" r="14" fill="#1f2937" />
+  <circle cx="60" cy="58" r="34" fill="#1f2937" />
+  <ellipse cx="60" cy="74" rx="22" ry="18" fill="#ffffff" />
+  <circle cx="47" cy="55" r="7" fill="#ffffff" />
+  <circle cx="73" cy="55" r="7" fill="#ffffff" />
+  <circle cx="48" cy="56" r="3.2" fill="#1f2937" />
+  <circle cx="74" cy="56" r="3.2" fill="#1f2937" />
+  <ellipse cx="60" cy="70" rx="5" ry="4" fill="#1f2937" />
+  <path d="M50 82 Q60 90 70 82" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round" />
 </svg>`,
 }
 
