@@ -96,6 +96,10 @@ export type TranslationKey =
   | 'iconScanMe'
   | 'uploadErrorType'
   | 'uploadErrorSize'
+  | 'supportHeading'
+  | 'supportSubtitle'
+  | 'supportScanHint'
+  | 'supportEmailButton'
 
 export const translations: Record<string, Record<TranslationKey, string>> = {
   en: {
@@ -201,6 +205,10 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconScanMe: 'Scan Me',
     uploadErrorType: 'Please choose an image file.',
     uploadErrorSize: 'Image is too large (max 5 MB).',
+    supportHeading: 'Need a hand?',
+    supportSubtitle: "Scan the code with your phone to email our support team directly — we're happy to help.",
+    supportScanHint: 'Scan to email us',
+    supportEmailButton: 'Email support',
   },
   zh: {
     appTitle: '二维码生成器',
@@ -302,6 +310,10 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconScanMe: '扫我',
     uploadErrorType: '请选择图片文件。',
     uploadErrorSize: '图片过大(最大 5 MB)。',
+    supportHeading: '需要帮助吗?',
+    supportSubtitle: '用手机扫描二维码,直接给我们的支持团队发邮件,我们很乐意为您提供帮助。',
+    supportScanHint: '扫码联系我们',
+    supportEmailButton: '联系支持团队',
   },
   es: {
     appTitle: 'Generador de códigos QR',
@@ -406,6 +418,10 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconScanMe: 'Escanéame',
     uploadErrorType: 'Elige un archivo de imagen.',
     uploadErrorSize: 'La imagen es demasiado grande (máx. 5 MB).',
+    supportHeading: '¿Necesitas ayuda?',
+    supportSubtitle: 'Escanea el código con tu teléfono para enviar un correo directo a nuestro equipo de soporte. Estamos encantados de ayudarte.',
+    supportScanHint: 'Escanea para escribirnos',
+    supportEmailButton: 'Contactar soporte',
   },
   ar: {
     appTitle: 'مولد رمز الاستجابة السريعة',
@@ -509,6 +525,10 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconScanMe: 'امسحني',
     uploadErrorType: 'يرجى اختيار ملف صورة.',
     uploadErrorSize: 'الصورة كبيرة جدًا (الحد الأقصى 5 ميغابايت).',
+    supportHeading: 'تحتاج مساعدة؟',
+    supportSubtitle: 'امسح الرمز بهاتفك لإرسال بريد إلكتروني مباشر إلى فريق الدعم لدينا — يسعدنا مساعدتك.',
+    supportScanHint: 'امسح للتواصل معنا',
+    supportEmailButton: 'تواصل مع الدعم',
   },
   fr: {
     appTitle: 'Générateur de code QR',
@@ -613,6 +633,10 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconScanMe: 'Scannez-moi',
     uploadErrorType: 'Veuillez choisir un fichier image.',
     uploadErrorSize: 'Image trop volumineuse (5 Mo max).',
+    supportHeading: "Besoin d'aide ?",
+    supportSubtitle: "Scannez le code avec votre téléphone pour envoyer un e-mail direct à notre équipe support — nous serons ravis de vous aider.",
+    supportScanHint: 'Scannez pour nous écrire',
+    supportEmailButton: 'Contacter le support',
   },
   pt: {
     appTitle: 'Gerador de código QR',
@@ -717,6 +741,10 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconScanMe: 'Escaneie-me',
     uploadErrorType: 'Escolha um arquivo de imagem.',
     uploadErrorSize: 'A imagem é muito grande (máx. 5 MB).',
+    supportHeading: 'Precisa de ajuda?',
+    supportSubtitle: 'Escaneie o código com seu celular para enviar um e-mail direto à nossa equipe de suporte — ficaremos felizes em ajudar.',
+    supportScanHint: 'Escaneie para nos contatar',
+    supportEmailButton: 'Contatar suporte',
   },
   de: {
     appTitle: 'QR-Code-Generator',
@@ -821,5 +849,9 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconScanMe: 'Scan mich',
     uploadErrorType: 'Bitte wähle eine Bilddatei.',
     uploadErrorSize: 'Bild ist zu groß (max. 5 MB).',
+    supportHeading: 'Brauchst du Hilfe?',
+    supportSubtitle: 'Scanne den Code mit deinem Handy, um direkt eine E-Mail an unser Support-Team zu senden — wir helfen gerne weiter.',
+    supportScanHint: 'Scannen, um uns zu kontaktieren',
+    supportEmailButton: 'Support kontaktieren',
   },
 }
