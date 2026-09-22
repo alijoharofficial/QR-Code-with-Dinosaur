@@ -6,15 +6,19 @@ import { Hero } from './components/Hero'
 import { IconPicker } from './components/IconPicker'
 import { QrPreview } from './components/QrPreview'
 import { QrShapePicker } from './components/QrShapePicker'
+import { QrTypeForm } from './components/QrTypeForm'
+import { QrTypePicker } from './components/QrTypePicker'
 import { SiteHeader } from './components/SiteHeader'
 import { StylePicker } from './components/StylePicker'
 import { UrlForm } from './components/UrlForm'
 import { useDebouncedValue } from './hooks/useDebouncedValue'
 import { useTheme } from './hooks/useTheme'
+import { useLanguage } from './i18n/LanguageContext'
 import { defaultIconId, findIcon, toDataUri } from './icons/data'
 import { colorThemes, defaultColorThemeId } from './lib/colorThemes'
 import { defaultDotStyleId, dotStyles } from './lib/dotStyles'
 import { defaultQrShapeId, qrShapes } from './lib/qrShapes'
+import { defaultQrTypeId, findQrType } from './lib/qrTypes'
 import { normalizeUrl } from './lib/url'
 import { useQrCode } from './lib/useQrCode'
 
@@ -22,24 +26,28 @@ const PLACEHOLDER_URL = 'https://qr-code-generator.app'
 
 function App() {
   const { theme, toggleTheme } = useTheme()
+  const { t } = useLanguage()
 
+  const [qrTypeId, setQrTypeId] = useState(defaultQrTypeId)
   const [rawInput, setRawInput] = useState('')
+  const [fieldValues, setFieldValues] = useState<Record<string, string>>({})
   const [iconId, setIconId] = useState(defaultIconId)
   const [customLogo, setCustomLogo] = useState<string | null>(null)
   const [themeId, setThemeId] = useState(defaultColorThemeId)
   const [styleId, setStyleId] = useState(defaultDotStyleId)
   const [qrShapeId, setQrShapeId] = useState(defaultQrShapeId)
 
+  const isUrlType = qrTypeId === 'url'
   const debouncedInput = useDebouncedValue(rawInput, 400)
+  const debouncedFieldValues = useDebouncedValue(fieldValues, 400)
 
   const errorMessage = useMemo(() => {
+    if (!isUrlType) return null
     const trimmed = debouncedInput.trim()
     if (!trimmed) return null
     const result = normalizeUrl(debouncedInput)
-    return !result.ok && result.reason === 'invalid'
-      ? 'Enter a valid URL, like example.com'
-      : null
-  }, [debouncedInput])
+    return !result.ok && result.reason === 'invalid' ? t('urlError') : null
+  }, [isUrlType, debouncedInput, t])
 
   // The QR value only advances when the (debounced) input resolves to a
   // valid URL, so an in-progress invalid edit never blanks the preview.
@@ -47,7 +55,7 @@ function App() {
   // an effect, since we need to conditionally skip the update.
   const [committedInput, setCommittedInput] = useState(debouncedInput)
   const [qrValue, setQrValue] = useState(PLACEHOLDER_URL)
-  if (debouncedInput !== committedInput) {
+  if (isUrlType && debouncedInput !== committedInput) {
     setCommittedInput(debouncedInput)
     const trimmed = debouncedInput.trim()
     if (!trimmed) {
@@ -58,12 +66,34 @@ function App() {
     }
   }
 
+  const builtValue = useMemo(() => {
+    if (isUrlType) return null
+    return findQrType(qrTypeId).build(debouncedFieldValues)
+  }, [isUrlType, qrTypeId, debouncedFieldValues])
+
+  const [committedFieldValues, setCommittedFieldValues] = useState(debouncedFieldValues)
+  if (!isUrlType && debouncedFieldValues !== committedFieldValues) {
+    setCommittedFieldValues(debouncedFieldValues)
+    setQrValue(builtValue || PLACEHOLDER_URL)
+  }
+
   const handleGenerate = () => {
     const result = normalizeUrl(rawInput)
     if (result.ok) {
       setCommittedInput(debouncedInput)
       setQrValue(result.url)
     }
+  }
+
+  const handleSelectQrType = (id: string) => {
+    setQrTypeId(id)
+    setRawInput('')
+    setFieldValues({})
+    setQrValue(PLACEHOLDER_URL)
+  }
+
+  const handleFieldChange = (id: string, value: string) => {
+    setFieldValues((prev) => ({ ...prev, [id]: value }))
   }
 
   const handleSelectIcon = (id: string) => {
@@ -86,7 +116,7 @@ function App() {
     qrShape,
   })
 
-  const isPlaceholder = !rawInput.trim()
+  const isPlaceholder = isUrlType ? !rawInput.trim() : !builtValue
 
   return (
     <div id="top" className="min-h-screen">
@@ -97,12 +127,21 @@ function App() {
 
         <section className="mx-auto grid w-full max-w-5xl gap-8 px-4 pb-16 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-12">
           <div className="flex flex-col gap-8 rounded-3xl border border-border bg-surface p-6 shadow-soft sm:p-8">
-            <UrlForm
-              value={rawInput}
-              onChange={setRawInput}
-              onSubmit={handleGenerate}
-              error={errorMessage}
-            />
+            <QrTypePicker selectedId={qrTypeId} onSelect={handleSelectQrType} />
+            {isUrlType ? (
+              <UrlForm
+                value={rawInput}
+                onChange={setRawInput}
+                onSubmit={handleGenerate}
+                error={errorMessage}
+              />
+            ) : (
+              <QrTypeForm
+                fields={findQrType(qrTypeId).fields}
+                values={fieldValues}
+                onChange={handleFieldChange}
+              />
+            )}
             <IconPicker
               selectedId={iconId}
               isCustom={customLogo !== null}
@@ -128,7 +167,7 @@ function App() {
 
       <footer className="flex items-center justify-center gap-2 border-t border-border py-8 text-center text-sm text-muted">
         <BrandMark className="h-4 w-4" animated={false} />
-        QR Code Generator runs entirely in your browser
+        {t('appTagline')}
       </footer>
     </div>
   )

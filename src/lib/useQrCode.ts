@@ -1,5 +1,5 @@
 import QRCodeStyling from 'qr-code-styling'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import type { ColorTheme } from './colorThemes'
 import type { DotStyle } from './dotStyles'
 import type { QrShape } from './qrShapes'
@@ -21,7 +21,8 @@ function colorOrGradient(value: ColorTheme['dots']) {
     : { color: undefined, gradient: value }
 }
 
-function buildStyleOptions(
+function buildOptions(
+  size: number,
   data: string,
   image: string,
   colorTheme: ColorTheme,
@@ -29,6 +30,16 @@ function buildStyleOptions(
   qrShape: QrShape,
 ) {
   return {
+    width: size,
+    height: size,
+    type: 'svg' as const,
+    margin: 8,
+    qrOptions: { errorCorrectionLevel: 'H' as const },
+    imageOptions: {
+      hideBackgroundDots: true,
+      imageSize: 0.42,
+      margin: 6,
+    },
     data,
     image,
     shape: qrShape.shape,
@@ -54,35 +65,24 @@ export function useQrCode({
   size = QR_SIZE,
 }: UseQrCodeOptions) {
   const containerRef = useRef<HTMLDivElement | null>(null)
-
-  const [qrCode] = useState(
-    () =>
-      new QRCodeStyling({
-        width: size,
-        height: size,
-        type: 'svg',
-        margin: 8,
-        qrOptions: { errorCorrectionLevel: 'H' },
-        imageOptions: {
-          hideBackgroundDots: true,
-          imageSize: 0.42,
-          margin: 6,
-        },
-        ...buildStyleOptions(data, image, colorTheme, dotStyle, qrShape),
-      }),
-  )
-  const qrCodeRef = useRef(qrCode)
+  const qrCodeRef = useRef<QRCodeStyling | null>(null)
 
   useEffect(() => {
-    if (containerRef.current) {
-      qrCode.append(containerRef.current)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    if (!containerRef.current) return
 
-  useEffect(() => {
-    qrCode.update(buildStyleOptions(data, image, colorTheme, dotStyle, qrShape))
-  }, [qrCode, data, image, colorTheme, dotStyle, qrShape])
+    // Recreated (rather than mutated via `.update()`) on every change: the
+    // underlying library only sets up its PNG/canvas export pipeline once
+    // per instance, so calling `.update()` on a long-lived instance leaves
+    // `.download()`/`.getRawData()` returning the *first* ever render even
+    // after the visible SVG has moved on. A fresh instance always exports
+    // whatever it was just built with.
+    const qrCode = new QRCodeStyling(
+      buildOptions(size, data, image, colorTheme, dotStyle, qrShape),
+    )
+    qrCodeRef.current = qrCode
+    containerRef.current.replaceChildren()
+    qrCode.append(containerRef.current)
+  }, [size, data, image, colorTheme, dotStyle, qrShape])
 
   return { containerRef, qrRef: qrCodeRef }
 }

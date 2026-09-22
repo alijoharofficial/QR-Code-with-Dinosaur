@@ -1,3 +1,4 @@
+import { useLanguage } from '../i18n/LanguageContext'
 import { dotStyles } from '../lib/dotStyles'
 
 interface StylePickerProps {
@@ -6,10 +7,11 @@ interface StylePickerProps {
 }
 
 export function StylePicker({ selectedId, onSelect }: StylePickerProps) {
+  const { t } = useLanguage()
   return (
     <fieldset>
       <legend className="mb-2 block text-sm font-semibold text-text">
-        Dot style
+        {t('dotStyle')}
       </legend>
       <div
         className="flex flex-wrap gap-2"

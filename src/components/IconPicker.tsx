@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { useLanguage } from '../i18n/LanguageContext'
 import { iconCategories } from '../icons/data'
 import { IconGlyph } from '../icons/IconGlyph'
 
@@ -17,6 +18,7 @@ export function IconPicker({
   onSelect,
   onUpload,
 }: IconPickerProps) {
+  const { t } = useLanguage()
   const [activeCategory, setActiveCategory] = useState(iconCategories[0].id)
   const fileInputRef = useRef<HTMLInputElement | null>(null)
 
@@ -31,7 +33,7 @@ export function IconPicker({
   return (
     <fieldset>
       <legend className="mb-2 block text-sm font-semibold text-text">
-        Center icon
+        {t('centerIcon')}
       </legend>
       <div className="mb-3 flex gap-2">
         {iconCategories.map((cat) => (
@@ -57,7 +59,7 @@ export function IconPicker({
               : 'bg-surface-muted text-muted hover:text-text'
           }`}
         >
-          Upload logo
+          {t('uploadLogo')}
         </button>
       </div>
 
@@ -90,9 +92,7 @@ export function IconPicker({
               if (file) handleFile(file)
             }}
           />
-          <span className="text-sm text-muted">
-            PNG, JPG, or SVG. Used in place of a preset icon.
-          </span>
+          <span className="text-sm text-muted">{t('uploadHint')}</span>
         </div>
       ) : (
         <div
