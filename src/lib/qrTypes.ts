@@ -19,7 +19,22 @@ export interface QrTypeConfig {
 }
 
 const digitsOnly = (s: string) => s.replace(/[^\d+]/g, '').replace(/(?!^)\+/g, '')
-const escapeWifi = (s: string) => s.replace(/([\\;,:"])/g, '\\$1')
+
+// WIFI: is a single-line format; strip any embedded newlines before escaping
+// the characters the spec reserves as field separators.
+const escapeWifi = (s: string) =>
+  s.replace(/[\r\n]+/g, ' ').replace(/([\\;,:"])/g, '\\$1')
+
+// vCard (RFC 6350) and iCalendar (RFC 5545) TEXT values share the same
+// escaping rules: backslash, comma and semicolon are backslash-escaped, and
+// a literal line break becomes the two-character sequence "\n". Without
+// this, a value containing a raw newline (e.g. pasted into a textarea)
+// would terminate the current property early and let the rest of the
+// input be parsed as one or more *new* vCard/iCalendar properties by
+// whatever app scans the resulting QR code — a structured-data / field
+// injection into someone else's contacts or calendar app.
+const escapeStructuredText = (s: string) =>
+  s.replace(/\\/g, '\\\\').replace(/[,;]/g, '\\$&').replace(/\r\n|\r|\n/g, '\\n')
 
 function icalDateTime(date: string, time: string): string {
   if (!date) return ''
@@ -65,15 +80,16 @@ export const qrTypes: QrTypeConfig[] = [
     ],
     build: (v) => {
       if (!v.firstName?.trim() && !v.lastName?.trim()) return null
+      const esc = escapeStructuredText
       const lines = [
         'BEGIN:VCARD',
         'VERSION:3.0',
-        `N:${v.lastName || ''};${v.firstName || ''};;;`,
-        `FN:${[v.firstName, v.lastName].filter(Boolean).join(' ')}`,
-        v.org && `ORG:${v.org}`,
-        v.phone && `TEL:${v.phone}`,
-        v.email && `EMAIL:${v.email}`,
-        v.website && `URL:${v.website}`,
+        `N:${esc(v.lastName || '')};${esc(v.firstName || '')};;;`,
+        `FN:${esc([v.firstName, v.lastName].filter(Boolean).join(' '))}`,
+        v.org && `ORG:${esc(v.org)}`,
+        v.phone && `TEL:${esc(v.phone)}`,
+        v.email && `EMAIL:${esc(v.email)}`,
+        v.website && `URL:${esc(v.website)}`,
         'END:VCARD',
       ].filter(Boolean)
       return lines.join('\n')
@@ -168,17 +184,18 @@ export const qrTypes: QrTypeConfig[] = [
     ],
     build: (v) => {
       if (!v.title?.trim() || !v.start) return null
+      const esc = escapeStructuredText
       const dtStart = icalDateTime(v.start, v.startTime)
       const dtEnd = v.end ? icalDateTime(v.end, v.endTime) : dtStart
       const lines = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
         'BEGIN:VEVENT',
-        `SUMMARY:${v.title}`,
+        `SUMMARY:${esc(v.title)}`,
         dtStart && `DTSTART:${dtStart}`,
         dtEnd && `DTEND:${dtEnd}`,
-        v.location && `LOCATION:${v.location}`,
-        v.description && `DESCRIPTION:${v.description}`,
+        v.location && `LOCATION:${esc(v.location)}`,
+        v.description && `DESCRIPTION:${esc(v.description)}`,
         'END:VEVENT',
         'END:VCALENDAR',
       ].filter(Boolean)

@@ -94,6 +94,8 @@ export type TranslationKey =
   | 'iconStorefront'
   | 'iconMenu'
   | 'iconScanMe'
+  | 'uploadErrorType'
+  | 'uploadErrorSize'
 
 export const translations: Record<string, Record<TranslationKey, string>> = {
   en: {
@@ -197,6 +199,8 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconStorefront: 'Storefront',
     iconMenu: 'Menu',
     iconScanMe: 'Scan Me',
+    uploadErrorType: 'Please choose an image file.',
+    uploadErrorSize: 'Image is too large (max 5 MB).',
   },
   zh: {
     appTitle: '二维码生成器',
@@ -296,6 +300,8 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconStorefront: '店铺',
     iconMenu: '菜单',
     iconScanMe: '扫我',
+    uploadErrorType: '请选择图片文件。',
+    uploadErrorSize: '图片过大(最大 5 MB)。',
   },
   es: {
     appTitle: 'Generador de códigos QR',
@@ -398,6 +404,8 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconStorefront: 'Tienda',
     iconMenu: 'Menú',
     iconScanMe: 'Escanéame',
+    uploadErrorType: 'Elige un archivo de imagen.',
+    uploadErrorSize: 'La imagen es demasiado grande (máx. 5 MB).',
   },
   ar: {
     appTitle: 'مولد رمز الاستجابة السريعة',
@@ -499,6 +507,8 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconStorefront: 'متجر',
     iconMenu: 'قائمة',
     iconScanMe: 'امسحني',
+    uploadErrorType: 'يرجى اختيار ملف صورة.',
+    uploadErrorSize: 'الصورة كبيرة جدًا (الحد الأقصى 5 ميغابايت).',
   },
   fr: {
     appTitle: 'Générateur de code QR',
@@ -601,6 +611,8 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconStorefront: 'Boutique',
     iconMenu: 'Menu',
     iconScanMe: 'Scannez-moi',
+    uploadErrorType: 'Veuillez choisir un fichier image.',
+    uploadErrorSize: 'Image trop volumineuse (5 Mo max).',
   },
   pt: {
     appTitle: 'Gerador de código QR',
@@ -703,6 +715,8 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconStorefront: 'Loja',
     iconMenu: 'Cardápio',
     iconScanMe: 'Escaneie-me',
+    uploadErrorType: 'Escolha um arquivo de imagem.',
+    uploadErrorSize: 'A imagem é muito grande (máx. 5 MB).',
   },
   de: {
     appTitle: 'QR-Code-Generator',
@@ -805,5 +819,7 @@ export const translations: Record<string, Record<TranslationKey, string>> = {
     iconStorefront: 'Ladengeschäft',
     iconMenu: 'Menü',
     iconScanMe: 'Scan mich',
+    uploadErrorType: 'Bitte wähle eine Bilddatei.',
+    uploadErrorSize: 'Bild ist zu groß (max. 5 MB).',
   },
 }

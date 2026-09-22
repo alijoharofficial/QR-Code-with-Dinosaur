@@ -3,6 +3,8 @@ import { useLanguage } from '../i18n/LanguageContext'
 import { iconCategories } from '../icons/data'
 import { IconGlyph } from '../icons/IconGlyph'
 
+const MAX_UPLOAD_BYTES = 5 * 1024 * 1024 // 5 MB
+
 interface IconPickerProps {
   selectedId: string
   isCustom: boolean
@@ -20,13 +22,30 @@ export function IconPicker({
 }: IconPickerProps) {
   const { t } = useLanguage()
   const [activeCategory, setActiveCategory] = useState(iconCategories[0].id)
+  const [uploadError, setUploadError] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement | null>(null)
 
   const handleFile = (file: File) => {
+    // Defense in depth: the `accept="image/*"` on the file input is only a
+    // picker hint and is trivially bypassed (drag-and-drop, renamed files),
+    // so re-validate the actual file here before it's read into memory and
+    // handed to the QR renderer. Everything stays local to the browser —
+    // nothing is uploaded to a server — this just guards against an
+    // oversized or non-image file wedging the tab.
+    if (!file.type.startsWith('image/')) {
+      setUploadError(t('uploadErrorType'))
+      return
+    }
+    if (file.size > MAX_UPLOAD_BYTES) {
+      setUploadError(t('uploadErrorSize'))
+      return
+    }
+    setUploadError(null)
     const reader = new FileReader()
     reader.onload = () => {
       if (typeof reader.result === 'string') onUpload(reader.result)
     }
+    reader.onerror = () => setUploadError(t('uploadErrorType'))
     reader.readAsDataURL(file)
   }
 
@@ -90,9 +109,12 @@ export function IconPicker({
             onChange={(e) => {
               const file = e.target.files?.[0]
               if (file) handleFile(file)
+              e.target.value = ''
             }}
           />
-          <span className="text-sm text-muted">{t('uploadHint')}</span>
+          <span className="text-sm text-muted">
+            {uploadError ?? t('uploadHint')}
+          </span>
         </div>
       ) : (
         <div

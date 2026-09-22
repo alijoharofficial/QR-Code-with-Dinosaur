@@ -37,7 +37,16 @@ function buildOptions(
     qrOptions: { errorCorrectionLevel: 'H' as const },
     imageOptions: {
       hideBackgroundDots: true,
-      imageSize: 0.42,
+      // Deliberately conservative: qr-code-styling's own "safe" hidden-area
+      // formula (imageSize * H-level correction budget) doesn't guarantee a
+      // decodable result for every data+icon combination in practice. At
+      // 0.42, roughly half of longer payloads (e.g. an Event with a
+      // description, or a WiFi network with a long password) failed to
+      // scan with a real decoder (jsQR) even though they rendered visually
+      // fine, regardless of which icon was used. 0.30 passed every
+      // combination tested (3 icons × several long vCard/Event/WiFi
+      // payloads) with real margin to spare.
+      imageSize: 0.3,
       margin: 6,
     },
     data,
