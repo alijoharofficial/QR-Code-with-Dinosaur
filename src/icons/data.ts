@@ -62,49 +62,20 @@ const monkey: IconOption = {
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
   ${SAFE_ZONE}
   <g fill="#1f2937">
-    <rect x="52" y="20" width="20" height="4" />
-    <rect x="44" y="24" width="40" height="4" />
-    <rect x="36" y="28" width="52" height="4" />
-    <rect x="36" y="32" width="52" height="4" />
-    <rect x="32" y="36" width="36" height="4" />
-    <rect x="84" y="36" width="4" height="4" />
-    <rect x="32" y="40" width="60" height="4" />
-    <rect x="32" y="44" width="32" height="4" />
-    <rect x="68" y="44" width="24" height="4" />
-    <rect x="28" y="48" width="28" height="4" />
-    <rect x="64" y="48" width="4" height="4" />
-    <rect x="88" y="48" width="8" height="4" />
-    <rect x="24" y="52" width="12" height="4" />
-    <rect x="40" y="52" width="60" height="4" />
-    <rect x="20" y="56" width="32" height="4" />
-    <rect x="56" y="56" width="20" height="4" />
-    <rect x="80" y="56" width="20" height="4" />
-    <rect x="28" y="60" width="4" height="4" />
-    <rect x="36" y="60" width="4" height="4" />
-    <rect x="44" y="60" width="8" height="4" />
-    <rect x="56" y="60" width="20" height="4" />
-    <rect x="80" y="60" width="16" height="4" />
-    <rect x="28" y="64" width="8" height="4" />
-    <rect x="44" y="64" width="12" height="4" />
-    <rect x="64" y="64" width="4" height="4" />
-    <rect x="84" y="64" width="12" height="4" />
-    <rect x="32" y="68" width="32" height="4" />
-    <rect x="88" y="68" width="8" height="4" />
-    <rect x="36" y="72" width="24" height="4" />
-    <rect x="64" y="72" width="4" height="4" />
-    <rect x="92" y="72" width="4" height="4" />
-    <rect x="36" y="76" width="24" height="4" />
-    <rect x="64" y="76" width="12" height="4" />
-    <rect x="84" y="76" width="12" height="4" />
-    <rect x="36" y="80" width="24" height="4" />
-    <rect x="76" y="80" width="8" height="4" />
-    <rect x="92" y="80" width="4" height="4" />
-    <rect x="36" y="84" width="28" height="4" />
-    <rect x="88" y="84" width="4" height="4" />
-    <rect x="40" y="88" width="36" height="4" />
-    <rect x="80" y="88" width="8" height="4" />
-    <rect x="48" y="92" width="36" height="4" />
-    <rect x="56" y="96" width="16" height="4" />
+    <rect x="44" y="18" width="32" height="10" />
+    <rect x="34" y="28" width="52" height="6" />
+    <rect x="24" y="52" width="14" height="16" />
+    <rect x="36" y="36" width="48" height="50" />
+    <rect x="40" y="54" width="40" height="10" />
+  </g>
+  <g fill="#ffffff">
+    <rect x="34" y="34" width="52" height="2" />
+    <rect x="28" y="56" width="6" height="8" />
+    <rect x="44" y="57" width="10" height="5" />
+    <rect x="66" y="57" width="10" height="5" />
+    <rect x="36" y="82" width="6" height="4" />
+    <rect x="78" y="82" width="6" height="4" />
+    <rect x="48" y="72" width="24" height="8" />
   </g>
 </svg>`,
 }
@@ -113,54 +84,9 @@ const tiger: IconOption = {
   id: 'tiger',
   name: 'Tiger',
   svg: `
-<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
   ${SAFE_ZONE}
-  <g fill="#1f2937">
-    <rect x="32" y="24" width="4" height="4" />
-    <rect x="44" y="24" width="32" height="4" />
-    <rect x="80" y="24" width="8" height="4" />
-    <rect x="28" y="28" width="52" height="4" />
-    <rect x="84" y="28" width="8" height="4" />
-    <rect x="32" y="32" width="12" height="4" />
-    <rect x="52" y="32" width="16" height="4" />
-    <rect x="76" y="32" width="12" height="4" />
-    <rect x="32" y="36" width="16" height="4" />
-    <rect x="52" y="36" width="16" height="4" />
-    <rect x="72" y="36" width="16" height="4" />
-    <rect x="32" y="40" width="16" height="4" />
-    <rect x="56" y="40" width="8" height="4" />
-    <rect x="72" y="40" width="16" height="4" />
-    <rect x="28" y="44" width="8" height="4" />
-    <rect x="40" y="44" width="12" height="4" />
-    <rect x="56" y="44" width="8" height="4" />
-    <rect x="68" y="44" width="4" height="4" />
-    <rect x="76" y="44" width="4" height="4" />
-    <rect x="84" y="44" width="8" height="4" />
-    <rect x="28" y="48" width="4" height="4" />
-    <rect x="36" y="48" width="28" height="4" />
-    <rect x="68" y="48" width="16" height="4" />
-    <rect x="88" y="48" width="4" height="4" />
-    <rect x="24" y="52" width="72" height="4" />
-    <rect x="24" y="56" width="32" height="4" />
-    <rect x="64" y="56" width="32" height="4" />
-    <rect x="24" y="60" width="24" height="4" />
-    <rect x="52" y="60" width="4" height="4" />
-    <rect x="72" y="60" width="12" height="4" />
-    <rect x="88" y="60" width="8" height="4" />
-    <rect x="24" y="64" width="24" height="4" />
-    <rect x="52" y="64" width="16" height="4" />
-    <rect x="72" y="64" width="12" height="4" />
-    <rect x="88" y="64" width="8" height="4" />
-    <rect x="24" y="68" width="28" height="4" />
-    <rect x="56" y="68" width="8" height="4" />
-    <rect x="68" y="68" width="28" height="4" />
-    <rect x="28" y="72" width="64" height="4" />
-    <rect x="32" y="76" width="56" height="4" />
-    <rect x="40" y="80" width="40" height="4" />
-    <rect x="44" y="84" width="12" height="4" />
-    <rect x="68" y="84" width="8" height="4" />
-    <rect x="52" y="88" width="16" height="4" />
-  </g>
+  <image href="data:image/png;base64,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" x="12" y="13.67" width="96" height="92.67" />
 </svg>`,
 }
 
