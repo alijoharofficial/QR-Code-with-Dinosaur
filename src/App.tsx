@@ -10,6 +10,7 @@ import { QrTypeForm } from './components/QrTypeForm'
 import { QrTypePicker } from './components/QrTypePicker'
 import { SiteHeader } from './components/SiteHeader'
 import { StylePicker } from './components/StylePicker'
+import { SupportSection } from './components/SupportSection'
 import { UrlForm } from './components/UrlForm'
 import { useDebouncedValue } from './hooks/useDebouncedValue'
 import { useTheme } from './hooks/useTheme'
@@ -125,7 +126,7 @@ function App() {
       <main>
         <Hero />
 
-        <section className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-8 px-4 pb-16 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-12">
+        <section className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-8 px-4 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-start lg:gap-12">
           <div className="flex flex-col gap-8 rounded-3xl border border-border bg-surface p-6 shadow-soft sm:p-8">
             <QrTypePicker selectedId={qrTypeId} onSelect={handleSelectQrType} />
             {isUrlType ? (
@@ -163,6 +164,8 @@ function App() {
         </section>
 
         <FaqSection />
+
+        <SupportSection />
       </main>
 
       <footer className="flex items-center justify-center gap-2 border-t border-border py-8 text-center text-sm text-muted">

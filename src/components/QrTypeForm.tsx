@@ -51,7 +51,7 @@ export function QrTypeForm({ fields, values, onChange }: QrTypeFormProps) {
                 placeholder={placeholder}
                 value={value}
                 onChange={(e) => onChange(field.id, e.target.value)}
-                className="w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-text placeholder:text-muted/70 transition-colors focus:border-accent"
+                className="w-full resize-y rounded-xl border border-border bg-surface px-4 py-3 text-sm text-text placeholder:text-muted/70 transition-colors focus:border-accent"
               />
             ) : field.type === 'select' ? (
               <select

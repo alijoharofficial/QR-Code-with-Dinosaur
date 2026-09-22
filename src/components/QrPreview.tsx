@@ -43,7 +43,7 @@ export function QrPreview({
   }
 
   return (
-    <div className="qr-fade-in flex w-full flex-col items-center rounded-3xl border border-border bg-surface p-6 shadow-soft sm:p-8">
+    <div className="qr-fade-in flex w-full flex-col items-center rounded-3xl border border-border bg-surface p-6 shadow-soft sm:p-8 lg:sticky lg:top-6">
       <div className="relative flex items-center justify-center rounded-2xl bg-white p-4 shadow-inner">
         <div ref={containerRef} className="[&_svg]:block" />
       </div>
