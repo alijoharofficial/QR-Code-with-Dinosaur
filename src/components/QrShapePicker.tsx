@@ -33,7 +33,7 @@ export function QrShapePicker({ selectedId, onSelect }: QrShapePickerProps) {
                   : 'border-transparent bg-surface text-muted hover:border-border'
               }`}
             >
-              {shape.name}
+              {t(shape.nameKey)}
             </button>
           )
         })}

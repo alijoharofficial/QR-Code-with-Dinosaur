@@ -1,8 +1,9 @@
 import type { Gradient } from 'qr-code-styling'
+import type { TranslationKey } from '../i18n/translations'
 
 export interface ColorTheme {
   id: string
-  name: string
+  nameKey: TranslationKey
   dots: string | Gradient
   corners: string | Gradient
   background: string
@@ -13,7 +14,7 @@ export interface ColorTheme {
 export const colorThemes: ColorTheme[] = [
   {
     id: 'classic',
-    name: 'Classic Black',
+    nameKey: 'themeClassicBlack',
     dots: '#18181b',
     corners: '#18181b',
     background: '#ffffff',
@@ -21,7 +22,7 @@ export const colorThemes: ColorTheme[] = [
   },
   {
     id: 'dino-green',
-    name: 'Dino Green',
+    nameKey: 'themeDinoGreen',
     dots: '#15803d',
     corners: '#14532d',
     background: '#ffffff',
@@ -29,7 +30,7 @@ export const colorThemes: ColorTheme[] = [
   },
   {
     id: 'sunset',
-    name: 'Sunset',
+    nameKey: 'themeSunset',
     dots: {
       type: 'linear',
       rotation: 0.7,
@@ -44,7 +45,7 @@ export const colorThemes: ColorTheme[] = [
   },
   {
     id: 'ocean',
-    name: 'Ocean',
+    nameKey: 'themeOcean',
     dots: {
       type: 'linear',
       rotation: 0.7,
@@ -59,7 +60,7 @@ export const colorThemes: ColorTheme[] = [
   },
   {
     id: 'midnight',
-    name: 'Midnight',
+    nameKey: 'themeMidnight',
     dots: '#e2e8f0',
     corners: '#e2e8f0',
     background: '#0f172a',
@@ -67,7 +68,7 @@ export const colorThemes: ColorTheme[] = [
   },
   {
     id: 'orange',
-    name: 'Orange',
+    nameKey: 'themeOrange',
     dots: '#ea580c',
     corners: '#9a3412',
     background: '#ffffff',

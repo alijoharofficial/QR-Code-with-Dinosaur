@@ -23,6 +23,7 @@ export function ColorThemePicker({
       >
         {colorThemes.map((themeOption) => {
           const isSelected = themeOption.id === selectedId
+          const name = t(themeOption.nameKey)
           return (
             <button
               key={themeOption.id}
@@ -30,8 +31,8 @@ export function ColorThemePicker({
               role="radio"
               aria-checked={isSelected}
               onClick={() => onSelect(themeOption.id)}
-              title={themeOption.name}
-              aria-label={themeOption.name}
+              title={name}
+              aria-label={name}
               className={`h-9 w-9 rounded-full border-2 transition-all active:scale-90 ${
                 isSelected
                   ? 'border-accent ring-2 ring-accent/30'
