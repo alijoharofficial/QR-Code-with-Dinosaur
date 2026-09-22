@@ -33,7 +33,7 @@ export function QrTypePicker({ selectedId, onSelect }: QrTypePickerProps) {
                   : 'border-transparent bg-surface text-muted hover:border-border'
               }`}
             >
-              {type.label}
+              {t(type.labelKey)}
             </button>
           )
         })}

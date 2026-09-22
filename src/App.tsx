@@ -125,7 +125,7 @@ function App() {
       <main>
         <Hero />
 
-        <section className="mx-auto grid w-full max-w-5xl gap-8 px-4 pb-16 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-12">
+        <section className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-8 px-4 pb-16 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-12">
           <div className="flex flex-col gap-8 rounded-3xl border border-border bg-surface p-6 shadow-soft sm:p-8">
             <QrTypePicker selectedId={qrTypeId} onSelect={handleSelectQrType} />
             {isUrlType ? (

@@ -33,7 +33,7 @@ export function StylePicker({ selectedId, onSelect }: StylePickerProps) {
                   : 'border-transparent bg-surface text-muted hover:border-border'
               }`}
             >
-              {style.name}
+              {t(style.nameKey)}
             </button>
           )
         })}

@@ -1,18 +1,19 @@
+import type { TranslationKey } from '../i18n/translations'
 import { normalizeUrl } from './url'
 
 export interface QrField {
   id: string
-  label: string
-  placeholder?: string
+  labelKey: TranslationKey
+  placeholderKey?: TranslationKey
   type: 'text' | 'tel' | 'email' | 'url' | 'textarea' | 'select' | 'date' | 'time' | 'checkbox'
-  options?: { value: string; label: string }[]
+  options?: { value: string; labelKey: TranslationKey }[]
   required?: boolean
   half?: boolean
 }
 
 export interface QrTypeConfig {
   id: string
-  label: string
+  labelKey: TranslationKey
   fields: QrField[]
   build: (values: Record<string, string>) => string | null
 }
@@ -30,8 +31,8 @@ function icalDateTime(date: string, time: string): string {
 export const qrTypes: QrTypeConfig[] = [
   {
     id: 'url',
-    label: 'Website',
-    fields: [{ id: 'url', label: 'Website URL', type: 'url', required: true }],
+    labelKey: 'qrTypeWebsite',
+    fields: [{ id: 'url', labelKey: 'fieldWebsiteUrl', type: 'url', required: true }],
     build: (v) => {
       const r = normalizeUrl(v.url || '')
       return r.ok ? r.url : null
@@ -39,10 +40,10 @@ export const qrTypes: QrTypeConfig[] = [
   },
   {
     id: 'whatsapp',
-    label: 'WhatsApp',
+    labelKey: 'qrTypeWhatsapp',
     fields: [
-      { id: 'number', label: 'Number', placeholder: 'e.g. +1 415 555 0100', type: 'tel', required: true },
-      { id: 'message', label: 'Message', placeholder: 'Optional pre-filled message', type: 'textarea' },
+      { id: 'number', labelKey: 'fieldWhatsappNumber', placeholderKey: 'placeholderWhatsappNumber', type: 'tel', required: true },
+      { id: 'message', labelKey: 'fieldMessage', placeholderKey: 'placeholderWhatsappMessage', type: 'textarea' },
     ],
     build: (v) => {
       const digits = digitsOnly(v.number || '').replace(/^\+/, '')
@@ -53,14 +54,14 @@ export const qrTypes: QrTypeConfig[] = [
   },
   {
     id: 'vcard',
-    label: 'vCard',
+    labelKey: 'qrTypeVcard',
     fields: [
-      { id: 'firstName', label: 'First name', type: 'text', required: true, half: true },
-      { id: 'lastName', label: 'Last name', type: 'text', half: true },
-      { id: 'phone', label: 'Phone', type: 'tel', half: true },
-      { id: 'email', label: 'Email', type: 'email', half: true },
-      { id: 'org', label: 'Company', type: 'text', half: true },
-      { id: 'website', label: 'Website', type: 'url', half: true },
+      { id: 'firstName', labelKey: 'fieldFirstName', type: 'text', required: true, half: true },
+      { id: 'lastName', labelKey: 'fieldLastName', type: 'text', half: true },
+      { id: 'phone', labelKey: 'fieldPhone', type: 'tel', half: true },
+      { id: 'email', labelKey: 'fieldEmail', type: 'email', half: true },
+      { id: 'org', labelKey: 'fieldCompany', type: 'text', half: true },
+      { id: 'website', labelKey: 'fieldWebsite', type: 'url', half: true },
     ],
     build: (v) => {
       if (!v.firstName?.trim() && !v.lastName?.trim()) return null
@@ -80,22 +81,22 @@ export const qrTypes: QrTypeConfig[] = [
   },
   {
     id: 'wifi',
-    label: 'WiFi',
+    labelKey: 'qrTypeWifi',
     fields: [
-      { id: 'ssid', label: 'Network name (SSID)', type: 'text', required: true, half: true },
-      { id: 'password', label: 'Network password', type: 'text', half: true },
+      { id: 'ssid', labelKey: 'fieldSsid', type: 'text', required: true, half: true },
+      { id: 'password', labelKey: 'fieldPassword', type: 'text', half: true },
       {
         id: 'encryption',
-        label: 'Type of encryption',
+        labelKey: 'fieldEncryptionType',
         type: 'select',
         half: true,
         options: [
-          { value: 'WPA', label: 'WPA/WPA2' },
-          { value: 'WEP', label: 'WEP' },
-          { value: 'nopass', label: 'None' },
+          { value: 'WPA', labelKey: 'encWpa' },
+          { value: 'WEP', labelKey: 'encWep' },
+          { value: 'nopass', labelKey: 'encNone' },
         ],
       },
-      { id: 'hidden', label: 'Hidden network', type: 'checkbox', half: true },
+      { id: 'hidden', labelKey: 'fieldHiddenNetwork', type: 'checkbox', half: true },
     ],
     build: (v) => {
       if (!v.ssid?.trim()) return null
@@ -107,11 +108,11 @@ export const qrTypes: QrTypeConfig[] = [
   },
   {
     id: 'email',
-    label: 'Email',
+    labelKey: 'qrTypeEmail',
     fields: [
-      { id: 'email', label: 'Email', type: 'email', required: true },
-      { id: 'subject', label: 'Subject', type: 'text' },
-      { id: 'message', label: 'Message', type: 'textarea' },
+      { id: 'email', labelKey: 'fieldEmail', type: 'email', required: true },
+      { id: 'subject', labelKey: 'fieldSubject', type: 'text' },
+      { id: 'message', labelKey: 'fieldMessage', type: 'textarea' },
     ],
     build: (v) => {
       if (!v.email?.trim()) return null
@@ -123,9 +124,9 @@ export const qrTypes: QrTypeConfig[] = [
   },
   {
     id: 'location',
-    label: 'Location',
+    labelKey: 'qrTypeLocation',
     fields: [
-      { id: 'query', label: 'Business address or place name', placeholder: 'e.g. 1600 Amphitheatre Pkwy, Mountain View, CA', type: 'text', required: true },
+      { id: 'query', labelKey: 'fieldAddressOrPlace', placeholderKey: 'placeholderAddress', type: 'text', required: true },
     ],
     build: (v) => {
       if (!v.query?.trim()) return null
@@ -134,10 +135,10 @@ export const qrTypes: QrTypeConfig[] = [
   },
   {
     id: 'product',
-    label: 'Product',
+    labelKey: 'qrTypeProduct',
     fields: [
-      { id: 'name', label: 'Product name', type: 'text', half: true },
-      { id: 'url', label: 'Product page URL', type: 'url', required: true, half: true },
+      { id: 'name', labelKey: 'fieldProductName', type: 'text', half: true },
+      { id: 'url', labelKey: 'fieldProductUrl', type: 'url', required: true, half: true },
     ],
     build: (v) => {
       const r = normalizeUrl(v.url || '')
@@ -146,10 +147,8 @@ export const qrTypes: QrTypeConfig[] = [
   },
   {
     id: 'appInstall',
-    label: 'App Install',
-    fields: [
-      { id: 'url', label: 'App Store / Play Store link', type: 'url', required: true },
-    ],
+    labelKey: 'qrTypeAppInstall',
+    fields: [{ id: 'url', labelKey: 'fieldAppLink', type: 'url', required: true }],
     build: (v) => {
       const r = normalizeUrl(v.url || '')
       return r.ok ? r.url : null
@@ -157,15 +156,15 @@ export const qrTypes: QrTypeConfig[] = [
   },
   {
     id: 'event',
-    label: 'Event',
+    labelKey: 'qrTypeEvent',
     fields: [
-      { id: 'title', label: 'Event title', type: 'text', required: true },
-      { id: 'start', label: 'Start date', type: 'date', half: true },
-      { id: 'startTime', label: 'Start time', type: 'time', half: true },
-      { id: 'end', label: 'End date', type: 'date', half: true },
-      { id: 'endTime', label: 'End time', type: 'time', half: true },
-      { id: 'location', label: 'Location', type: 'text' },
-      { id: 'description', label: 'Description', type: 'textarea' },
+      { id: 'title', labelKey: 'fieldEventTitle', type: 'text', required: true },
+      { id: 'start', labelKey: 'fieldStartDate', type: 'date', half: true },
+      { id: 'startTime', labelKey: 'fieldStartTime', type: 'time', half: true },
+      { id: 'end', labelKey: 'fieldEndDate', type: 'date', half: true },
+      { id: 'endTime', labelKey: 'fieldEndTime', type: 'time', half: true },
+      { id: 'location', labelKey: 'fieldEventLocation', type: 'text' },
+      { id: 'description', labelKey: 'fieldDescription', type: 'textarea' },
     ],
     build: (v) => {
       if (!v.title?.trim() || !v.start) return null
@@ -188,10 +187,8 @@ export const qrTypes: QrTypeConfig[] = [
   },
   {
     id: 'pdf',
-    label: 'PDF',
-    fields: [
-      { id: 'url', label: 'Link to your hosted PDF', placeholder: 'https://example.com/file.pdf', type: 'url', required: true },
-    ],
+    labelKey: 'qrTypePdf',
+    fields: [{ id: 'url', labelKey: 'fieldPdfLink', type: 'url', required: true }],
     build: (v) => {
       const r = normalizeUrl(v.url || '')
       return r.ok ? r.url : null

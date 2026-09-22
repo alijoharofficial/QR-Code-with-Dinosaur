@@ -1,13 +1,18 @@
+import type { TranslationKey } from '../i18n/translations'
+
 export interface IconOption {
   id: string
+  /** Display name. Brand/proper names (Dyno, WhatsApp, PayPal, ...) stay untranslated. */
   name: string
+  /** For generic (non-brand) icons: overrides `name` with a translated label. */
+  nameKey?: TranslationKey
   /** Full inline SVG markup, viewBox 0 0 120 120, with a white safe-zone circle baked in. */
   svg: string
 }
 
 export interface IconCategory {
   id: string
-  label: string
+  labelKey: TranslationKey
   icons: IconOption[]
 }
 
@@ -135,6 +140,7 @@ const xTwitter: IconOption = {
 const mail: IconOption = {
   id: 'mail',
   name: 'Email',
+  nameKey: 'iconEmail',
   svg: `
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
   ${SAFE_ZONE}
@@ -147,6 +153,7 @@ const mail: IconOption = {
 const scanFrame: IconOption = {
   id: 'scan-frame',
   name: 'Scan',
+  nameKey: 'iconScan',
   svg: `
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
   ${SAFE_ZONE}
@@ -164,6 +171,7 @@ const scanFrame: IconOption = {
 const storefront: IconOption = {
   id: 'storefront',
   name: 'Storefront',
+  nameKey: 'iconStorefront',
   svg: `
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
   ${SAFE_ZONE}
@@ -178,6 +186,7 @@ const storefront: IconOption = {
 const menu: IconOption = {
   id: 'menu',
   name: 'Menu',
+  nameKey: 'iconMenu',
   svg: `
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
   ${SAFE_ZONE}
@@ -193,6 +202,7 @@ const menu: IconOption = {
 const scanMeRed: IconOption = {
   id: 'scan-me-red',
   name: 'Scan Me',
+  nameKey: 'iconScanMe',
   svg: `
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
   ${SAFE_ZONE}
@@ -211,6 +221,7 @@ const scanMeRed: IconOption = {
 const scanMeTeal: IconOption = {
   id: 'scan-me-teal',
   name: 'Scan Me',
+  nameKey: 'iconScanMe',
   svg: `
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
   ${SAFE_ZONE}
@@ -250,15 +261,15 @@ const bitcoin: IconOption = {
 }
 
 export const iconCategories: IconCategory[] = [
-  { id: 'animals', label: 'Animals', icons: [dyno, monkey, tiger] },
+  { id: 'animals', labelKey: 'catAnimals', icons: [dyno, monkey, tiger] },
   {
     id: 'social',
-    label: 'Social',
+    labelKey: 'catSocial',
     icons: [whatsapp, instagram, facebook, xTwitter],
   },
   {
     id: 'actions',
-    label: 'Actions',
+    labelKey: 'catActions',
     icons: [
       mail,
       scanFrame,

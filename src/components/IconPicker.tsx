@@ -47,7 +47,7 @@ export function IconPicker({
                 : 'bg-surface-muted text-muted hover:text-text'
             }`}
           >
-            {cat.label}
+            {t(cat.labelKey)}
           </button>
         ))}
         <button
@@ -104,6 +104,7 @@ export function IconPicker({
             .find((c) => c.id === activeCategory)!
             .icons.map((icon) => {
               const isSelected = !isCustom && icon.id === selectedId
+              const label = icon.nameKey ? t(icon.nameKey) : icon.name
               return (
                 <button
                   key={icon.id}
@@ -111,7 +112,7 @@ export function IconPicker({
                   role="radio"
                   aria-checked={isSelected}
                   onClick={() => onSelect(icon.id)}
-                  title={icon.name}
+                  title={label}
                   className={`group flex flex-col items-center gap-1.5 rounded-2xl border-2 p-2 transition-all active:scale-95 ${
                     isSelected
                       ? 'border-accent bg-surface-muted shadow-soft'
@@ -123,7 +124,7 @@ export function IconPicker({
                     className="block h-12 w-12 overflow-hidden rounded-full [&_svg]:h-full [&_svg]:w-full"
                   />
                   <span className="text-xs font-medium text-muted group-hover:text-text">
-                    {icon.name}
+                    {label}
                   </span>
                 </button>
               )
