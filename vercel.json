@@ -1,6 +1,15 @@
 {
   "headers": [
     {
+      "source": "/sitemap.html",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {
