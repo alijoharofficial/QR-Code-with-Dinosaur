@@ -84,21 +84,35 @@ const tiger: IconOption = {
   id: 'tiger',
   name: 'Tiger',
   svg: `
-<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
   ${SAFE_ZONE}
-  <g fill="none" stroke="#1f2937" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="18,46 34,16 46,42" />
-    <polyline points="102,46 86,16 74,42" />
-    <polyline points="18,46 10,68 22,86 33,100 48,106 60,112 72,106 87,100 98,86 110,68 102,46" />
-    <line x1="60" y1="36" x2="60" y2="58" />
-    <line x1="48" y1="40" x2="72" y2="40" />
-    <line x1="50" y1="47" x2="70" y2="47" />
-    <line x1="52" y1="54" x2="68" y2="54" />
-    <polygon points="34,60 44,56 56,56 60,60 56,64 44,64" />
-    <polygon points="86,60 76,56 64,56 60,60 64,64 76,64" />
-    <polygon points="55,68 60,64 65,68 60,76" />
-    <polyline points="44,90 60,80 76,90" />
-    <polyline points="44,90 60,102 76,90" />
+  <g fill="#1f2937">
+    <rect x="30" y="18" width="8" height="6" />
+    <rect x="27" y="24" width="14" height="6" />
+    <rect x="24" y="30" width="20" height="6" />
+    <rect x="82" y="18" width="8" height="6" />
+    <rect x="79" y="24" width="14" height="6" />
+    <rect x="76" y="30" width="20" height="6" />
+    <rect x="40" y="34" width="40" height="6" />
+    <rect x="28" y="40" width="64" height="50" />
+    <rect x="36" y="90" width="48" height="6" />
+    <rect x="46" y="96" width="28" height="4" />
+  </g>
+  <g fill="#ffffff">
+    <rect x="34" y="40" width="4" height="16" />
+    <rect x="58" y="38" width="4" height="20" />
+    <rect x="82" y="40" width="4" height="16" />
+    <rect x="38" y="58" width="14" height="10" />
+    <rect x="68" y="58" width="14" height="10" />
+    <rect x="44" y="78" width="32" height="14" />
+  </g>
+  <g fill="#1f2937">
+    <rect x="42" y="61" width="6" height="6" />
+    <rect x="72" y="61" width="6" height="6" />
+    <rect x="56" y="80" width="8" height="6" />
+    <rect x="36" y="84" width="4" height="3" />
+    <rect x="80" y="84" width="4" height="3" />
+    <rect x="58" y="88" width="4" height="4" />
   </g>
 </svg>`,
 }
