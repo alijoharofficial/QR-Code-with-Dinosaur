@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type QRCodeStyling from 'qr-code-styling'
+import { useLanguage } from '../i18n/LanguageContext'
 
 interface QrPreviewProps {
   containerRef: React.RefObject<HTMLDivElement | null>
@@ -16,6 +17,7 @@ export function QrPreview({
   displayUrl,
   isPlaceholder,
 }: QrPreviewProps) {
+  const { t } = useLanguage()
   const [copyState, setCopyState] = useState<CopyState>('idle')
 
   const handleDownload = (extension: 'png' | 'svg') => {
@@ -48,7 +50,9 @@ export function QrPreview({
 
       <p className="mt-4 max-w-full truncate text-sm text-muted" title={displayUrl}>
         {isPlaceholder ? (
-          <span className="italic">Sample preview: {displayUrl}</span>
+          <span className="italic">
+            {t('samplePreview')} {displayUrl}
+          </span>
         ) : (
           displayUrl
         )}
@@ -60,14 +64,14 @@ export function QrPreview({
           onClick={() => handleDownload('png')}
           className="inline-flex items-center justify-center rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-accent-contrast transition-all hover:bg-accent-hover active:scale-[0.97]"
         >
-          Download PNG
+          {t('downloadPng')}
         </button>
         <button
           type="button"
           onClick={() => handleDownload('svg')}
           className="inline-flex items-center justify-center rounded-xl border border-border bg-surface px-5 py-2.5 text-sm font-semibold text-text transition-all hover:border-accent hover:text-accent active:scale-[0.97]"
         >
-          Download SVG
+          {t('downloadSvg')}
         </button>
         <button
           type="button"
@@ -75,10 +79,10 @@ export function QrPreview({
           className="inline-flex items-center justify-center rounded-xl border border-border bg-surface px-5 py-2.5 text-sm font-semibold text-text transition-all hover:border-accent hover:text-accent active:scale-[0.97]"
         >
           {copyState === 'copied'
-            ? 'Copied!'
+            ? t('copied')
             : copyState === 'error'
-              ? 'Copy failed'
-              : 'Copy image'}
+              ? t('copyFailed')
+              : t('copyImage')}
         </button>
       </div>
     </div>

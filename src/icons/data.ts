@@ -132,12 +132,143 @@ const xTwitter: IconOption = {
 </svg>`,
 }
 
+const mail: IconOption = {
+  id: 'mail',
+  name: 'Email',
+  svg: `
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  ${SAFE_ZONE}
+  <circle cx="60" cy="60" r="42" fill="#ca8a04" />
+  <rect x="35" y="42" width="50" height="36" rx="6" fill="#ffffff" />
+  <path d="M37 45 L60 62 L83 45" fill="none" stroke="#ca8a04" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>`,
+}
+
+const scanFrame: IconOption = {
+  id: 'scan-frame',
+  name: 'Scan',
+  svg: `
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  ${SAFE_ZONE}
+  <circle cx="60" cy="60" r="42" fill="#c026d3" />
+  <g fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round">
+    <path d="M40 34h-6a6 6 0 0 0-6 6v6" />
+    <path d="M80 34h6a6 6 0 0 1 6 6v6" />
+    <path d="M40 86h-6a6 6 0 0 1-6-6v-6" />
+    <path d="M80 86h6a6 6 0 0 0 6-6v-6" />
+  </g>
+  <rect x="46" y="46" width="28" height="28" rx="3" fill="#ffffff" />
+</svg>`,
+}
+
+const storefront: IconOption = {
+  id: 'storefront',
+  name: 'Storefront',
+  svg: `
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  ${SAFE_ZONE}
+  <circle cx="60" cy="60" r="42" fill="#22c55e" />
+  <rect x="38" y="52" width="44" height="32" rx="3" fill="#ffffff" />
+  <rect x="52" y="64" width="16" height="20" fill="#22c55e" />
+  <path d="M34 40 L40 52 H80 L86 40 Z" fill="#ffffff" />
+  <rect x="34" y="36" width="52" height="6" rx="2" fill="#ffffff" />
+</svg>`,
+}
+
+const menu: IconOption = {
+  id: 'menu',
+  name: 'Menu',
+  svg: `
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  ${SAFE_ZONE}
+  <circle cx="60" cy="60" r="42" fill="#7c3aed" />
+  <g fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M42 36v16m0 0v32m-7-32v10a7 7 0 0 0 14 0V36" />
+    <path d="M78 36v48" />
+    <path d="M78 36c-6 0-9 5-9 11s3 9 9 9" />
+  </g>
+</svg>`,
+}
+
+const scanMeRed: IconOption = {
+  id: 'scan-me-red',
+  name: 'Scan Me',
+  svg: `
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  ${SAFE_ZONE}
+  <circle cx="60" cy="60" r="42" fill="#ef4444" />
+  <g fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round">
+    <path d="M38 40v-4a4 4 0 0 1 4-4h4" />
+    <path d="M82 40v-4a4 4 0 0 0-4-4h-4" />
+    <path d="M38 80v4a4 4 0 0 0 4 4h4" />
+    <path d="M82 80v4a4 4 0 0 1-4 4h-4" />
+  </g>
+  <text x="60" y="57" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="14" fill="#ffffff">SCAN</text>
+  <text x="60" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="14" fill="#ffffff">ME</text>
+</svg>`,
+}
+
+const scanMeTeal: IconOption = {
+  id: 'scan-me-teal',
+  name: 'Scan Me',
+  svg: `
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  ${SAFE_ZONE}
+  <circle cx="60" cy="60" r="42" fill="#14b8a6" />
+  <g fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round">
+    <path d="M38 40v-4a4 4 0 0 1 4-4h4" />
+    <path d="M82 40v-4a4 4 0 0 0-4-4h-4" />
+    <path d="M38 80v4a4 4 0 0 0 4 4h4" />
+    <path d="M82 80v4a4 4 0 0 1-4 4h-4" />
+  </g>
+  <text x="60" y="57" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="14" fill="#ffffff">SCAN</text>
+  <text x="60" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="14" fill="#ffffff">ME</text>
+</svg>`,
+}
+
+const paypal: IconOption = {
+  id: 'paypal',
+  name: 'PayPal',
+  svg: `
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  ${SAFE_ZONE}
+  <circle cx="60" cy="60" r="42" fill="#1e3a8a" />
+  <path d="M47 36h17c9 0 15 6 13.5 15-1.7 10.6-9 16-19 16h-6.5l-2.5 15H39z" fill="#8fc1ff" />
+  <path d="M41 44h17c9 0 15 6 13.5 15-1.7 10.6-9 16-19 16h-6.5l-2.5 15H33z" fill="#ffffff" />
+</svg>`,
+}
+
+const bitcoin: IconOption = {
+  id: 'bitcoin',
+  name: 'Bitcoin',
+  svg: `
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  ${SAFE_ZONE}
+  <circle cx="60" cy="60" r="42" fill="#f7931a" />
+  <text x="60" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="48" fill="#ffffff">&#8383;</text>
+</svg>`,
+}
+
 export const iconCategories: IconCategory[] = [
   { id: 'animals', label: 'Animals', icons: [dyno, monkey, tiger] },
   {
     id: 'social',
     label: 'Social',
     icons: [whatsapp, instagram, facebook, xTwitter],
+  },
+  {
+    id: 'actions',
+    label: 'Actions',
+    icons: [
+      mail,
+      scanFrame,
+      storefront,
+      menu,
+      scanMeRed,
+      scanMeTeal,
+      paypal,
+      bitcoin,
+    ],
   },
 ]
 

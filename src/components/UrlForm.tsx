@@ -1,4 +1,5 @@
 import type { ChangeEvent, FormEvent } from 'react'
+import { useLanguage } from '../i18n/LanguageContext'
 
 interface UrlFormProps {
   value: string
@@ -8,6 +9,8 @@ interface UrlFormProps {
 }
 
 export function UrlForm({ value, onChange, onSubmit, error }: UrlFormProps) {
+  const { t } = useLanguage()
+
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
     onSubmit()
@@ -23,7 +26,7 @@ export function UrlForm({ value, onChange, onSubmit, error }: UrlFormProps) {
         htmlFor="url-input"
         className="mb-2 block text-sm font-semibold text-text"
       >
-        Your website URL
+        {t('urlLabel')}
       </label>
       <div className="flex flex-col gap-3 sm:flex-row">
         <input
@@ -31,7 +34,7 @@ export function UrlForm({ value, onChange, onSubmit, error }: UrlFormProps) {
           type="text"
           inputMode="url"
           autoComplete="url"
-          placeholder="example.com"
+          placeholder={t('urlPlaceholder')}
           value={value}
           onChange={handleChange}
           aria-invalid={error ? 'true' : 'false'}
@@ -42,7 +45,7 @@ export function UrlForm({ value, onChange, onSubmit, error }: UrlFormProps) {
           type="submit"
           className="inline-flex shrink-0 items-center justify-center rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-accent-contrast transition-all hover:bg-accent-hover active:scale-[0.98]"
         >
-          Generate
+          {t('generate')}
         </button>
       </div>
       {error ? (
@@ -51,7 +54,7 @@ export function UrlForm({ value, onChange, onSubmit, error }: UrlFormProps) {
         </p>
       ) : (
         <p id="url-hint" className="mt-2 text-sm text-muted">
-          We'll add "https://" automatically if you leave it out.
+          {t('urlHint')}
         </p>
       )}
     </form>

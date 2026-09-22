@@ -1,39 +1,39 @@
 import { useLanguage } from '../i18n/LanguageContext'
-import { qrShapes } from '../lib/qrShapes'
+import { qrTypes } from '../lib/qrTypes'
 
-interface QrShapePickerProps {
+interface QrTypePickerProps {
   selectedId: string
   onSelect: (id: string) => void
 }
 
-export function QrShapePicker({ selectedId, onSelect }: QrShapePickerProps) {
+export function QrTypePicker({ selectedId, onSelect }: QrTypePickerProps) {
   const { t } = useLanguage()
   return (
     <fieldset>
       <legend className="mb-2 block text-sm font-semibold text-text">
-        {t('qrShape')}
+        {t('qrTypeLabel')}
       </legend>
       <div
         className="flex flex-wrap gap-2"
         role="radiogroup"
-        aria-label="QR shape"
+        aria-label={t('qrTypeLabel')}
       >
-        {qrShapes.map((shape) => {
-          const isSelected = shape.id === selectedId
+        {qrTypes.map((type) => {
+          const isSelected = type.id === selectedId
           return (
             <button
-              key={shape.id}
+              key={type.id}
               type="button"
               role="radio"
               aria-checked={isSelected}
-              onClick={() => onSelect(shape.id)}
+              onClick={() => onSelect(type.id)}
               className={`rounded-full border-2 px-3 py-1.5 text-xs font-semibold transition-all active:scale-95 ${
                 isSelected
                   ? 'border-accent bg-surface-muted text-text'
                   : 'border-transparent bg-surface text-muted hover:border-border'
               }`}
             >
-              {shape.name}
+              {type.label}
             </button>
           )
         })}

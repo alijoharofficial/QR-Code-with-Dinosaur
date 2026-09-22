@@ -1,3 +1,4 @@
+import { useLanguage } from '../i18n/LanguageContext'
 import { colorThemes } from '../lib/colorThemes'
 
 interface ColorThemePickerProps {
@@ -9,10 +10,11 @@ export function ColorThemePicker({
   selectedId,
   onSelect,
 }: ColorThemePickerProps) {
+  const { t } = useLanguage()
   return (
     <fieldset>
       <legend className="mb-2 block text-sm font-semibold text-text">
-        Color theme
+        {t('colorTheme')}
       </legend>
       <div
         className="flex flex-wrap gap-3"
