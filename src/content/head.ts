@@ -74,3 +74,15 @@ export function buildHeadHtml({ route, softwareApplication, faqItems, breadcrumb
 
   return parts.join('\n    ')
 }
+
+/**
+ * Minimal head for the 404 page: a title and a noindex directive, no
+ * canonical/OG/JSON-LD — a "page not found" response shouldn't claim a
+ * canonical URL or be offered for social sharing.
+ */
+export function buildNotFoundHeadHtml(): string {
+  return [
+    `<title>Page Not Found | ${escapeHtml(SITE_NAME)}</title>`,
+    `<meta name="robots" content="noindex, follow" />`,
+  ].join('\n    ')
+}

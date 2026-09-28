@@ -1,7 +1,7 @@
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
 import { AppShell } from './AppShell'
-import { buildHeadHtml } from './content/head'
+import { buildHeadHtml, buildNotFoundHeadHtml } from './content/head'
 import { allRoutes, findRouteMeta } from './content/routes'
 import { findGuide } from './content/guides'
 import { findToolPage } from './content/toolPages'
@@ -9,6 +9,20 @@ import { homeFaq } from './content/faq'
 import { SITE_URL } from './content/site'
 
 export { allRoutes, SITE_URL }
+
+/** Any path guaranteed not to match a real route, so it falls through to
+ * the app's own `*` catch-all (NotFoundPage) when rendered. */
+const NOT_FOUND_MARKER_PATH = '/__404_prerender_marker__'
+
+/** Renders the 404 page to static HTML, for Vercel's automatic 404.html convention. */
+export function renderNotFound() {
+  const html = renderToString(
+    <StaticRouter location={NOT_FOUND_MARKER_PATH}>
+      <AppShell />
+    </StaticRouter>,
+  )
+  return { html, head: buildNotFoundHeadHtml() }
+}
 
 export function render(url: string) {
   const html = renderToString(

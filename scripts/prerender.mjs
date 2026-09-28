@@ -17,7 +17,7 @@ const serverDir = path.join(distDir, 'server')
 const templatePath = path.join(distDir, 'index.html')
 const template = fs.readFileSync(templatePath, 'utf-8')
 
-const { render, allRoutes, SITE_URL } = await import(
+const { render, renderNotFound, allRoutes, SITE_URL } = await import(
   path.join(serverDir, 'entry-server.js')
 )
 
@@ -50,6 +50,16 @@ const sitemap =
 
 fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemap)
 console.log(`wrote dist/sitemap.xml (${allRoutes.length} routes)`)
+
+// dist/404.html is Vercel's (and most static hosts') convention for the
+// page served on any unmatched path, so a real dead/broken link gets the
+// site's own animated 404 instead of a blank host-default error page.
+{
+  const { html, head } = renderNotFound()
+  const page = template.replace('<!--app-head-->', head).replace('<!--app-html-->', html)
+  fs.writeFileSync(path.join(distDir, '404.html'), page)
+  console.log('wrote dist/404.html')
+}
 
 // The SSR bundle is a build-time-only tool, never served.
 fs.rmSync(serverDir, { recursive: true, force: true })
