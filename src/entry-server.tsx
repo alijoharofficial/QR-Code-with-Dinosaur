@@ -3,7 +3,9 @@ import { StaticRouter } from 'react-router'
 import { AppShell } from './AppShell'
 import { buildHeadHtml } from './content/head'
 import { allRoutes, findRouteMeta } from './content/routes'
-import { findArticle } from './content/articles'
+import { findGuide } from './content/guides'
+import { findToolPage } from './content/toolPages'
+import { homeFaq } from './content/faq'
 import { SITE_URL } from './content/site'
 
 export { allRoutes, SITE_URL }
@@ -24,16 +26,26 @@ export function render(url: string) {
   }
 
   const isHome = url === '/'
-  const article = url.startsWith('/blog/') ? findArticle(url.slice('/blog/'.length)) : undefined
-  const breadcrumbs = article
+  const toolPage = findToolPage(url)
+  const guide = url.startsWith('/guides/') ? findGuide(url.slice('/guides/'.length)) : undefined
+
+  const softwareApplication = isHome
+    ? {}
+    : toolPage
+      ? { name: toolPage.h1, description: toolPage.description }
+      : undefined
+
+  const faqItems = isHome ? homeFaq : toolPage ? toolPage.faq : undefined
+
+  const breadcrumbs = guide
     ? [
         { name: 'Home', path: '/' },
-        { name: 'Guides', path: '/blog' },
-        { name: article.meta.h1, path: url },
+        { name: 'Guides', path: '/guides' },
+        { name: guide.meta.h1, path: url },
       ]
     : undefined
 
-  const head = buildHeadHtml({ route, isHome, breadcrumbs })
+  const head = buildHeadHtml({ route, softwareApplication, faqItems, breadcrumbs })
 
   return { html, head }
 }

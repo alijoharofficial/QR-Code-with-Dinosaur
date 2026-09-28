@@ -6,38 +6,78 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.qrcodegenerator.us/blog</loc>
+    <loc>https://www.qrcodegenerator.us/qr-code-with-dinosaur</loc>
     <lastmod>2026-09-28</lastmod>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.qrcodegenerator.us/blog/how-to-make-a-qr-code-with-a-logo</loc>
+    <loc>https://www.qrcodegenerator.us/qr-code-with-logo</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/custom-qr-code</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/qr-code-for-menu</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/qr-code-for-wifi</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/guides</loc>
     <lastmod>2026-09-28</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.qrcodegenerator.us/blog/qr-codes-for-restaurant-menus</loc>
+    <loc>https://www.qrcodegenerator.us/guides/how-to-make-qr-with-logo</loc>
     <lastmod>2026-09-28</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.qrcodegenerator.us/blog/qr-codes-for-wedding-invitations</loc>
+    <loc>https://www.qrcodegenerator.us/guides/static-vs-dynamic-qr-codes</loc>
     <lastmod>2026-09-28</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.qrcodegenerator.us/blog/static-vs-dynamic-qr-codes</loc>
+    <loc>https://www.qrcodegenerator.us/guides/do-qr-codes-expire</loc>
     <lastmod>2026-09-28</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.qrcodegenerator.us/blog/how-to-make-a-cute-qr-code-that-still-scans</loc>
+    <loc>https://www.qrcodegenerator.us/guides/qr-codes-for-small-business</loc>
     <lastmod>2026-09-28</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.qrcodegenerator.us/blog/best-uses-of-qr-codes-for-small-businesses</loc>
+    <loc>https://www.qrcodegenerator.us/services</loc>
     <lastmod>2026-09-28</lastmod>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/about</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/contact</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/privacy-policy</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/terms</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.5</priority>
   </url>
 </urlset>

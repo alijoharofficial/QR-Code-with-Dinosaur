@@ -1,6 +1,7 @@
 import { absoluteUrl, OG_IMAGE_HEIGHT, OG_IMAGE_URL, OG_IMAGE_WIDTH, SITE_NAME } from './site'
 import { buildBreadcrumbLd, buildFaqPageLd, buildSoftwareApplicationLd } from './structuredData'
 import type { BreadcrumbEntry } from './structuredData'
+import type { FaqItem } from './faq'
 import type { RouteMeta } from './routes'
 
 function escapeHtml(value: string): string {
@@ -20,13 +21,15 @@ function jsonLdScript(data: unknown): string {
 
 export interface HeadOptions {
   route: RouteMeta
-  /** Include the site-wide SoftwareApplication + FAQPage JSON-LD (homepage only). */
-  isHome?: boolean
-  /** Breadcrumb trail for BreadcrumbList JSON-LD (article pages). */
+  /** Include SoftwareApplication JSON-LD (the homepage and every tool page). */
+  softwareApplication?: { name?: string; description?: string }
+  /** On-page FAQ items to also emit as matching FAQPage JSON-LD. */
+  faqItems?: FaqItem[]
+  /** Breadcrumb trail for BreadcrumbList JSON-LD (guide pages). */
   breadcrumbs?: BreadcrumbEntry[]
 }
 
-export function buildHeadHtml({ route, isHome, breadcrumbs }: HeadOptions): string {
+export function buildHeadHtml({ route, softwareApplication, faqItems, breadcrumbs }: HeadOptions): string {
   const title = escapeHtml(route.title)
   const description = escapeHtml(route.description)
   const url = absoluteUrl(route.path)
@@ -49,9 +52,20 @@ export function buildHeadHtml({ route, isHome, breadcrumbs }: HeadOptions): stri
     `<meta name="twitter:image" content="${OG_IMAGE_URL}" />`,
   ]
 
-  if (isHome) {
-    parts.push(jsonLdScript(buildSoftwareApplicationLd()))
-    parts.push(jsonLdScript(buildFaqPageLd()))
+  if (softwareApplication) {
+    parts.push(
+      jsonLdScript(
+        buildSoftwareApplicationLd({
+          path: route.path,
+          name: softwareApplication.name,
+          description: softwareApplication.description,
+        }),
+      ),
+    )
+  }
+
+  if (faqItems && faqItems.length > 0) {
+    parts.push(jsonLdScript(buildFaqPageLd(faqItems)))
   }
 
   if (breadcrumbs && breadcrumbs.length > 0) {

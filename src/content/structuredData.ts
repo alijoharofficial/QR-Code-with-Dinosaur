@@ -1,13 +1,18 @@
-import { absoluteUrl, SITE_NAME, SITE_URL } from './site'
-import { homeFaq } from './faq'
+import { absoluteUrl, SITE_NAME } from './site'
+import type { FaqItem } from './faq'
 
-export function buildSoftwareApplicationLd() {
+export function buildSoftwareApplicationLd(options?: {
+  path?: string
+  name?: string
+  description?: string
+}) {
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: SITE_NAME,
-    url: `${SITE_URL}/`,
+    name: options?.name ?? SITE_NAME,
+    url: absoluteUrl(options?.path ?? '/'),
     description:
+      options?.description ??
       'Free QR code generator with cute animal icons — including a dinosaur, monkey, and tiger — or your own logo. Customize colors, dot style, and shape, then download as PNG or SVG. Runs entirely in your browser, no signup required.',
     applicationCategory: 'BrowserApplication',
     operatingSystem: 'Any',
@@ -19,11 +24,11 @@ export function buildSoftwareApplicationLd() {
   }
 }
 
-export function buildFaqPageLd() {
+export function buildFaqPageLd(items: FaqItem[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: homeFaq.map((item) => ({
+    mainEntity: items.map((item) => ({
       '@type': 'Question',
       name: item.question,
       acceptedAnswer: {

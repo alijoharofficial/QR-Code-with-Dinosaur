@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import type { ArticleMeta } from './types'
+import type { GuideMeta } from './types'
 
-export const meta: ArticleMeta = {
+export const meta: GuideMeta = {
   slug: 'static-vs-dynamic-qr-codes',
   title: "Static vs Dynamic QR Codes: What's the Difference?",
   description:
@@ -31,11 +31,15 @@ export function Content() {
         it, and nothing that can go offline or get shut down later. It works exactly
         the same on the day you print it as it does ten years later. This is the kind
         of QR code this generator creates: build it once, and it's yours for free,
-        forever.
+        forever — see{' '}
+        <Link to="/guides/do-qr-codes-expire">do QR codes expire?</Link> for more on
+        exactly what that means in practice.
       </p>
-      <p>The tradeoff is that a static code is fixed. If you encoded a link and later
-      need that code to point somewhere else, you have to generate and reprint a new
-      code — you cannot edit what's already baked into the pattern.</p>
+      <p>
+        The tradeoff is that a static code is fixed. If you encoded a link and later
+        need that code to point somewhere else, you have to generate and reprint a new
+        code — you cannot edit what's already baked into the pattern.
+      </p>
 
       <h2>Dynamic QR codes</h2>
       <p>
@@ -71,7 +75,7 @@ export function Content() {
             <td>Static — free, permanent, no account needed</td>
           </tr>
           <tr>
-            <td>Printed once for a one-time event (a wedding, a single menu run)</td>
+            <td>Printed once for a one-time event or a single menu run</td>
             <td>Static — nothing to maintain afterward</td>
           </tr>
           <tr>
@@ -87,7 +91,7 @@ export function Content() {
 
       <h2>The practical middle ground</h2>
       <p>
-        For most individual and small-business use — restaurant menus, event
+        For most individual and small-business use — menus, WiFi access, event
         invitations, business cards, product packaging, social links — a static code
         pointed at a link you control (your own website, a page you can edit anytime)
         gets you most of the benefit of a dynamic code without a subscription. You
@@ -97,13 +101,8 @@ export function Content() {
       </p>
       <p>
         This tool generates static QR codes with a custom icon or logo, in your choice
-        of colors and shape, downloadable as PNG or SVG. Try it on the{' '}
-        <Link to="/">QR code generator</Link>, or see it in action for a specific use
-        case in{' '}
-        <Link to="/blog/qr-codes-for-restaurant-menus">
-          QR codes for restaurant menus
-        </Link>
-        .
+        of colors and shape, downloadable as PNG or SVG. Try it in our{' '}
+        <Link to="/custom-qr-code">custom QR code generator →</Link>
       </p>
     </>
   )

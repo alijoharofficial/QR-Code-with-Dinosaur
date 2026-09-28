@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import { articles } from '../content/articles'
+import { guides } from '../content/guides'
 
-export function BlogTeaserSection() {
+export function GuidesTeaserSection() {
   return (
     <section
       className="mx-auto w-full max-w-5xl px-4 pb-16 sm:px-6"
@@ -12,16 +12,16 @@ export function BlogTeaserSection() {
           Guides &amp; tips
         </h2>
         <Link
-          to="/blog"
+          to="/guides"
           className="shrink-0 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
         >
           View all guides →
         </Link>
       </div>
-      <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {articles.slice(0, 3).map(({ meta }) => (
+      <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {guides.map(({ meta }) => (
           <li key={meta.slug} className="rounded-2xl border border-border bg-surface p-5">
-            <Link to={`/blog/${meta.slug}`} className="block">
+            <Link to={`/guides/${meta.slug}`} className="block">
               <h3 className="font-semibold text-text transition-colors hover:text-accent">
                 {meta.h1}
               </h3>

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import type { ArticleMeta } from './types'
+import type { GuideMeta } from './types'
 
-export const meta: ArticleMeta = {
-  slug: 'how-to-make-a-qr-code-with-a-logo',
+export const meta: GuideMeta = {
+  slug: 'how-to-make-qr-with-logo',
   title: 'How to Make a QR Code with a Logo (Free Guide)',
   description:
     'Learn how to make a QR code with a logo in the middle that still scans reliably, step by step — including error correction, sizing, and contrast tips.',
@@ -26,7 +26,7 @@ export function Content() {
 
       <h2>Why you can cover part of a QR code and it still works</h2>
       <p>
-        QR codes are built with a error-correction layer baked into the standard
+        QR codes are built with an error-correction layer baked into the standard
         itself. Depending on the level chosen when the code is generated, a QR code can
         lose anywhere from about 7% to about 30% of its pattern — covered by a logo,
         smudged, printed on a wrinkled surface — and a scanner can still reconstruct
@@ -40,13 +40,14 @@ export function Content() {
       <ol>
         <li>
           <strong>Choose what the QR code should do.</strong> On the{' '}
-          <Link to="/">QR code generator</Link>, pick a type — a website link, a WiFi
-          network, a contact card, and so on — and fill in the details.
+          <Link to="/qr-code-with-logo">logo QR code generator</Link>, pick a type — a
+          website link, a WiFi network, a contact card, and so on — and fill in the
+          details.
         </li>
         <li>
-          <strong>Open the icon picker.</strong> Choose a built-in icon (the pixel-art
-          dinosaur is a good starting point if you just want something friendly and
-          memorable), or select "Upload logo" and choose your own image file.
+          <strong>Open the icon picker.</strong> Select "Upload logo" and choose your
+          own image file, or pick one of the built-in icons if you don't have a logo
+          file handy.
         </li>
         <li>
           <strong>Check the preview.</strong> The logo sits inside a protected white
@@ -96,12 +97,8 @@ export function Content() {
       </p>
       <p>
         Once those two things are handled, a QR code with a logo is just as reliable
-        as a plain one — and considerably more memorable. Head back to the{' '}
-        <Link to="/">QR code generator</Link> to build yours, or read about{' '}
-        <Link to="/blog/how-to-make-a-cute-qr-code-that-still-scans">
-          making a cute, custom QR code that still scans
-        </Link>{' '}
-        for more styling ideas.
+        as a plain one — and considerably more memorable. Try it in our{' '}
+        <Link to="/qr-code-with-logo">logo QR generator →</Link>
       </p>
     </>
   )

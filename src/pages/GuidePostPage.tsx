@@ -1,49 +1,39 @@
 import { Link, useParams } from 'react-router-dom'
 import { Breadcrumbs } from '../components/Breadcrumbs'
-import { findArticle } from '../content/articles'
-import { findRouteMeta } from '../content/routes'
+import { GuideCredit } from '../components/GuideCredit'
+import { findGuide } from '../content/guides'
+import { findRouteMeta, homeRoute } from '../content/routes'
 import { useRouteHead } from '../hooks/useRouteHead'
 
-export function BlogPostPage() {
+export function GuidePostPage() {
   const { slug = '' } = useParams()
-  const article = findArticle(slug)
-  const route = findRouteMeta(`/blog/${slug}`)
+  const guide = findGuide(slug)
+  const route = findRouteMeta(`/guides/${slug}`) ?? homeRoute
+  useRouteHead(route)
 
-  if (article && route) {
-    return <ArticleView slug={slug} article={article} />
+  if (!guide) {
+    return (
+      <div className="mx-auto w-full max-w-2xl px-4 py-16 text-center sm:px-6">
+        <h1 className="text-2xl font-bold text-text">Guide not found</h1>
+        <p className="mt-3 text-muted">
+          That guide doesn't exist, or the link is out of date.
+        </p>
+        <Link to="/guides" className="mt-6 inline-block font-semibold text-accent hover:text-accent-hover">
+          Browse all guides
+        </Link>
+      </div>
+    )
   }
 
-  return (
-    <div className="mx-auto w-full max-w-2xl px-4 py-16 text-center sm:px-6">
-      <h1 className="text-2xl font-bold text-text">Guide not found</h1>
-      <p className="mt-3 text-muted">
-        That guide doesn't exist, or the link is out of date.
-      </p>
-      <Link to="/blog" className="mt-6 inline-block font-semibold text-accent hover:text-accent-hover">
-        Browse all guides
-      </Link>
-    </div>
-  )
-}
-
-function ArticleView({
-  slug,
-  article,
-}: {
-  slug: string
-  article: NonNullable<ReturnType<typeof findArticle>>
-}) {
-  const route = findRouteMeta(`/blog/${slug}`)!
-  useRouteHead(route)
-  const { meta, Content } = article
+  const { meta, Content } = guide
 
   return (
     <article className="mx-auto w-full max-w-2xl px-4 py-10 sm:px-6">
       <Breadcrumbs
         items={[
           { name: 'Home', path: '/' },
-          { name: 'Guides', path: '/blog' },
-          { name: meta.h1, path: `/blog/${meta.slug}` },
+          { name: 'Guides', path: '/guides' },
+          { name: meta.h1, path: `/guides/${meta.slug}` },
         ]}
       />
 
@@ -66,14 +56,16 @@ function ArticleView({
         <Content />
       </div>
 
-      <div className="mt-12 rounded-2xl border border-border bg-surface p-5">
+      <GuideCredit />
+
+      <div className="mt-6 rounded-2xl border border-border bg-surface p-5">
         <p className="text-sm text-muted">
           Ready to make your own?{' '}
           <Link to="/" className="font-semibold text-accent hover:text-accent-hover">
             Open the QR code generator
           </Link>{' '}
           or{' '}
-          <Link to="/blog" className="font-semibold text-accent hover:text-accent-hover">
+          <Link to="/guides" className="font-semibold text-accent hover:text-accent-hover">
             browse more guides
           </Link>
           .

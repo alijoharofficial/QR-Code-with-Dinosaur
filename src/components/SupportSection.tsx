@@ -4,8 +4,8 @@ import { colorThemes } from '../lib/colorThemes'
 import { dotStyles } from '../lib/dotStyles'
 import { qrShapes } from '../lib/qrShapes'
 import { useQrCode } from '../lib/useQrCode'
+import { SUPPORT_EMAIL } from '../content/site'
 
-const SUPPORT_EMAIL = 'info@qrcodegenerator.us'
 const SUPPORT_MAILTO = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent('Support request')}`
 
 export function SupportSection() {

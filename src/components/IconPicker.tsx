@@ -11,6 +11,9 @@ interface IconPickerProps {
   customPreview: string | null
   onSelect: (id: string) => void
   onUpload: (dataUrl: string) => void
+  /** Which category tab is open initially (e.g. so a themed page can open
+   * straight to the category its default icon lives in). */
+  initialCategoryId?: string
 }
 
 export function IconPicker({
@@ -19,9 +22,10 @@ export function IconPicker({
   customPreview,
   onSelect,
   onUpload,
+  initialCategoryId,
 }: IconPickerProps) {
   const { t } = useLanguage()
-  const [activeCategory, setActiveCategory] = useState(iconCategories[0].id)
+  const [activeCategory, setActiveCategory] = useState(initialCategoryId ?? iconCategories[0].id)
   const [uploadError, setUploadError] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement | null>(null)
 

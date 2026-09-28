@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom'
-import type { ArticleMeta } from './types'
+import type { GuideMeta } from './types'
 
-export const meta: ArticleMeta = {
-  slug: 'best-uses-of-qr-codes-for-small-businesses',
-  title: 'Best Uses of QR Codes for Small Businesses',
+export const meta: GuideMeta = {
+  slug: 'qr-codes-for-small-business',
+  title: 'QR Codes for Small Business: 6 Practical Uses',
   description:
-    'From menus to WiFi, packaging to business cards — practical ways small businesses use QR codes, plus tips for choosing an icon and testing before printing.',
-  h1: 'Best Uses of QR Codes for Small Businesses',
+    'From payment links to packaging, business cards to reviews — practical, low-cost ways a small business can put a free QR code to work.',
+  h1: 'QR Codes for Small Business',
   excerpt:
-    'Practical, low-cost ways a small business can put a QR code to work — beyond just the menu.',
+    'Practical, low-cost ways a small business can put a QR code to work, beyond the obvious menu.',
   publishedDate: '2026-09-28',
 }
 
@@ -19,30 +19,14 @@ export function Content() {
         A QR code is one of the cheapest marketing tools a small business has: free to
         generate, free to print alongside whatever you're already printing, and it
         turns any physical surface — a receipt, a window sticker, a package — into a
-        link to something online. Here are the uses that consistently pay for
-        themselves.
+        link to something online. Two of the most common uses, menus and WiFi access,
+        have their own dedicated tools here: see{' '}
+        <Link to="/qr-code-for-menu">QR codes for menus</Link> and{' '}
+        <Link to="/qr-code-for-wifi">QR codes for WiFi</Link>. This guide covers the
+        rest.
       </p>
 
-      <h2>1. Menus and price lists</h2>
-      <p>
-        Covered in detail in{' '}
-        <Link to="/blog/qr-codes-for-restaurant-menus">
-          QR codes for restaurant menus
-        </Link>
-        , but the same idea works for any business with a list of offerings that
-        changes — a salon's service menu, a food truck's daily board, a class
-        schedule.
-      </p>
-
-      <h2>2. WiFi access for customers and guests</h2>
-      <p>
-        A WiFi QR code encodes the network name and password together, so a customer
-        scans it and connects without typing anything. This tool has a dedicated WiFi
-        type built for exactly this — useful for cafés, waiting rooms, short-term
-        rentals, and offices with visitors.
-      </p>
-
-      <h2>3. Payment and tipping links</h2>
+      <h2>1. Payment and tipping links</h2>
       <p>
         A code that opens a payment link or a tip page is common on receipts, at
         counters, or on delivery packaging. Keep this one especially high-contrast and
@@ -50,7 +34,7 @@ export function Content() {
         the first try when money is involved.
       </p>
 
-      <h2>4. Social profiles and review links</h2>
+      <h2>2. Social profiles and review links</h2>
       <p>
         A single code near the register or on a receipt that links to your Google
         Business or Yelp review page removes the biggest barrier to getting reviews:
@@ -58,7 +42,7 @@ export function Content() {
         your social profiles together.
       </p>
 
-      <h2>5. Business cards</h2>
+      <h2>3. Business cards</h2>
       <p>
         A QR code on a business card that encodes a contact card (this tool has a
         dedicated type for that) lets someone save your name, number, and email to
@@ -66,7 +50,7 @@ export function Content() {
         also exactly when most hand-typed contacts never actually get saved.
       </p>
 
-      <h2>6. Product packaging</h2>
+      <h2>4. Product packaging</h2>
       <p>
         A code on packaging can link to care instructions, a warranty registration,
         an ingredient or allergen list, or a "how to use this" video — information
@@ -74,20 +58,22 @@ export function Content() {
         a review page after a purchase.
       </p>
 
-      <h2>7. Event flyers and posters</h2>
+      <h2>5. Event flyers and posters</h2>
       <p>
         A code linking straight to a ticket page or an RSVP form on a flyer removes a
         step between someone seeing your poster and actually signing up, compared to
         making them search for your event by name later.
       </p>
 
-      <h2>Choosing an icon that fits your brand</h2>
+      <h2>6. A branded, on-theme code</h2>
       <p>
         A generic QR code looks like it could belong to anyone. Picking a distinct
-        icon or uploading your logo — even something as simple as a colorful animal
-        icon that matches your branding, like the dinosaur, monkey, or tiger options
-        here — makes your codes recognizable at a glance across menus, receipts, and
-        signage, and signals a bit more care than a plain black square.
+        icon or uploading your logo makes your codes recognizable at a glance across
+        receipts, packaging, and signage — try the{' '}
+        <Link to="/custom-qr-code">custom QR code generator</Link> to match your
+        brand's colors and style, or the{' '}
+        <Link to="/qr-code-with-logo">logo generator</Link> to use your own logo
+        directly.
       </p>
 
       <h2>Before you print in bulk</h2>
@@ -96,7 +82,7 @@ export function Content() {
         <li>Keep contrast high and avoid covering the three corner squares.</li>
         <li>
           Remember these are static codes — see{' '}
-          <Link to="/blog/static-vs-dynamic-qr-codes">
+          <Link to="/guides/static-vs-dynamic-qr-codes">
             static vs. dynamic QR codes
           </Link>{' '}
           if you expect a destination link to change often after printing.
