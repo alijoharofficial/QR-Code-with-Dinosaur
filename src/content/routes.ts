@@ -1,7 +1,9 @@
-import { guides } from './guides'
-import { toolPages } from './toolPages'
+import { languages, defaultLanguageId } from '../i18n/languages'
+import { localizedPath } from '../i18n/routing'
+import { getContent, getGuides, toolPageConfigs } from './registry'
 
 export interface RouteMeta {
+  /** Full path, including a locale prefix for non-English routes. */
   path: string
   title: string
   description: string
@@ -9,108 +11,97 @@ export interface RouteMeta {
   priority: number
   /** ISO date (YYYY-MM-DD) for sitemap <lastmod>. */
   lastmod: string
+  /** Locale this route renders in. */
+  lang: string
+  /** The unprefixed (English) equivalent path, used to group hreflang alternates. */
+  canonicalPath: string
 }
 
 const SITE_LAST_UPDATED = '2026-09-28'
 
-export const homeRoute: RouteMeta = {
-  path: '/',
-  title: 'QR Code Generator with a Dinosaur Logo | Custom & Free',
-  description:
-    'Make a free custom QR code with a dinosaur logo, animal icon, or your own image. Cute, scannable QR codes in seconds, no signup, works offline.',
-  priority: 1.0,
-  lastmod: SITE_LAST_UPDATED,
+function buildRoutesForLocale(lang: string): RouteMeta[] {
+  const content = getContent(lang)
+  const guides = getGuides(lang)
+  const routes: RouteMeta[] = []
+
+  routes.push({
+    path: localizedPath('/', lang),
+    canonicalPath: '/',
+    title: content.routes.home.title,
+    description: content.routes.home.description,
+    priority: 1.0,
+    lastmod: SITE_LAST_UPDATED,
+    lang,
+  })
+
+  for (const config of toolPageConfigs) {
+    const copy = content.toolPages[config.id]
+    routes.push({
+      path: localizedPath(config.path, lang),
+      canonicalPath: config.path,
+      title: copy.title,
+      description: copy.description,
+      priority: 0.8,
+      lastmod: SITE_LAST_UPDATED,
+      lang,
+    })
+  }
+
+  routes.push({
+    path: localizedPath('/guides', lang),
+    canonicalPath: '/guides',
+    title: content.routes.guidesIndex.title,
+    description: content.routes.guidesIndex.description,
+    priority: 0.7,
+    lastmod: SITE_LAST_UPDATED,
+    lang,
+  })
+
+  for (const guide of guides) {
+    const canonicalPath = `/guides/${guide.slug}`
+    routes.push({
+      path: localizedPath(canonicalPath, lang),
+      canonicalPath,
+      title: guide.copy.title,
+      description: guide.copy.description,
+      priority: 0.7,
+      lastmod: guide.publishedDate,
+      lang,
+    })
+  }
+
+  const trustPages: { canonicalPath: string; title: string; description: string }[] = [
+    { canonicalPath: '/services', title: content.routes.services.title, description: content.routes.services.description },
+    { canonicalPath: '/about', title: content.routes.about.title, description: content.routes.about.description },
+    { canonicalPath: '/contact', title: content.routes.contact.title, description: content.routes.contact.description },
+    { canonicalPath: '/privacy-policy', title: content.routes.privacy.title, description: content.routes.privacy.description },
+    { canonicalPath: '/terms', title: content.routes.terms.title, description: content.routes.terms.description },
+  ]
+  for (const page of trustPages) {
+    routes.push({
+      path: localizedPath(page.canonicalPath, lang),
+      canonicalPath: page.canonicalPath,
+      title: page.title,
+      description: page.description,
+      priority: 0.5,
+      lastmod: SITE_LAST_UPDATED,
+      lang,
+    })
+  }
+
+  return routes
 }
 
-/** The 5 tool-variant / use-case pages that embed the QR generator itself. */
-export const toolRoutes: RouteMeta[] = toolPages.map((page) => ({
-  path: page.path,
-  title: page.title,
-  description: page.description,
-  priority: 0.8,
-  lastmod: SITE_LAST_UPDATED,
-}))
+/** Every route that gets prerendered to static HTML and listed in the sitemap: 16 pages × 7 languages. */
+export const allRoutes: RouteMeta[] = languages.flatMap((l) => buildRoutesForLocale(l.id))
 
-export const guidesIndexRoute: RouteMeta = {
-  path: '/guides',
-  title: 'QR Code Guides & Tips | QR Code Generator',
-  description:
-    'Practical, original guides on QR codes: adding a logo, static vs dynamic codes, whether they expire, and QR codes for small business. All free to read.',
-  priority: 0.7,
-  lastmod: SITE_LAST_UPDATED,
-}
-
-export const guideRoutes: RouteMeta[] = guides.map((guide) => ({
-  path: `/guides/${guide.meta.slug}`,
-  title: guide.meta.title,
-  description: guide.meta.description,
-  priority: 0.7,
-  lastmod: guide.meta.publishedDate,
-}))
-
-/** Trust / company pages. */
-export const servicesRoute: RouteMeta = {
-  path: '/services',
-  title: 'Services | QR Code Generator',
-  description:
-    'Need more than a QR code? See the web, branding, and marketing services offered by TECH24, the team behind this free QR code generator.',
-  priority: 0.5,
-  lastmod: SITE_LAST_UPDATED,
-}
-
-export const aboutRoute: RouteMeta = {
-  path: '/about',
-  title: 'About | QR Code Generator',
-  description:
-    'About this free QR code generator: what it does, how it protects your data, and who built and maintains it.',
-  priority: 0.5,
-  lastmod: SITE_LAST_UPDATED,
-}
-
-export const contactRoute: RouteMeta = {
-  path: '/contact',
-  title: 'Contact | QR Code Generator',
-  description:
-    'Get in touch about this free QR code generator: questions, feedback, or bug reports welcome.',
-  priority: 0.5,
-  lastmod: SITE_LAST_UPDATED,
-}
-
-export const privacyRoute: RouteMeta = {
-  path: '/privacy-policy',
-  title: 'Privacy Policy | QR Code Generator',
-  description:
-    'How this QR code generator handles your data: what stays in your browser, what analytics are used, and what is never collected.',
-  priority: 0.5,
-  lastmod: SITE_LAST_UPDATED,
-}
-
-export const termsRoute: RouteMeta = {
-  path: '/terms',
-  title: 'Terms of Use | QR Code Generator',
-  description:
-    'The terms for using this free QR code generator, including what it does, what it does not guarantee, and how it may be used.',
-  priority: 0.5,
-  lastmod: SITE_LAST_UPDATED,
-}
-
-export const trustRoutes: RouteMeta[] = [
-  servicesRoute,
-  aboutRoute,
-  contactRoute,
-  privacyRoute,
-  termsRoute,
-]
-
-/** Every route that gets prerendered to static HTML and listed in the sitemap. */
-export const allRoutes: RouteMeta[] = [
-  homeRoute,
-  ...toolRoutes,
-  guidesIndexRoute,
-  ...guideRoutes,
-  ...trustRoutes,
-]
+export const homeRoute: RouteMeta = allRoutes.find((r) => r.canonicalPath === '/' && r.lang === defaultLanguageId)!
 
 export function findRouteMeta(path: string): RouteMeta | undefined {
   return allRoutes.find((route) => route.path === path)
+}
+
+/** All localized variants of the same page, grouped by its canonical (English) path, for hreflang. */
+export function alternatesFor(canonicalPath: string): RouteMeta[] {
+  return allRoutes.filter((r) => r.canonicalPath === canonicalPath)
 }

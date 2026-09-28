@@ -6,7 +6,7 @@ import { useLanguage } from '../i18n/LanguageContext'
  * lands on the tool without knowing what a QR code actually is.
  */
 export function WhatIsQrCode() {
-  const { t } = useLanguage()
+  const { t, content } = useLanguage()
 
   return (
     <div className="mx-auto mb-8 w-full max-w-3xl px-4 sm:px-6">
@@ -24,15 +24,10 @@ export function WhatIsQrCode() {
           <circle cx="12" cy="17" r="0.6" fill="currentColor" stroke="none" />
         </svg>
         <div>
-          <h2 className="text-sm font-bold uppercase tracking-wide text-text">What is a QR code?</h2>
-          <p className="mt-1.5 text-sm leading-relaxed text-muted">
-            A QR (Quick Response) code is a small square pattern that stores data a
-            camera can read in an instant, no app or typing needed. Point a phone
-            camera at one and it decodes straight to the link, WiFi network, or
-            contact card packed inside it.
-          </p>
+          <h2 className="text-sm font-bold uppercase tracking-wide text-text">{content.home.whatIsQrHeading}</h2>
+          <p className="mt-1.5 text-sm leading-relaxed text-muted">{content.home.whatIsQrBody}</p>
           <p className="mt-2.5 text-xs font-semibold uppercase tracking-wide text-muted/80">
-            This generator supports
+            {content.home.thisGeneratorSupports}
           </p>
           <div className="mt-2 flex flex-wrap gap-1.5">
             {qrTypes.map((type) => (

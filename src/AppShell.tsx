@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import { LanguageProvider } from './i18n/LanguageContext'
+import { nonDefaultLocaleIds } from './i18n/routing'
 import { Layout } from './components/Layout'
 import { ScrollToTop } from './components/ScrollToTop'
 import { AboutPage } from './pages/AboutPage'
@@ -12,7 +13,33 @@ import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage'
 import { ServicesPage } from './pages/ServicesPage'
 import { TermsPage } from './pages/TermsPage'
 import { ToolVariantPage } from './pages/ToolVariantPage'
-import { toolPages } from './content/toolPages'
+import { toolPageConfigs } from './content/registry'
+
+/**
+ * The 16-page route tree, reused once unprefixed (English, at `/`) and
+ * once per non-English locale under a literal path prefix (e.g. `/es`),
+ * so every language gets its own crawlable, prerendered URL rather than a
+ * client-only toggle. `prefix` is `''` for English or `'<lang>/'` otherwise.
+ */
+function appRouteChildren(prefix: string) {
+  return [
+    prefix ? (
+      <Route key={`${prefix}home`} path={prefix.slice(0, -1)} element={<HomePage />} />
+    ) : (
+      <Route key="home" index element={<HomePage />} />
+    ),
+    ...toolPageConfigs.map((config) => (
+      <Route key={`${prefix}${config.path}`} path={`${prefix}${config.path.slice(1)}`} element={<ToolVariantPage />} />
+    )),
+    <Route key={`${prefix}guides`} path={`${prefix}guides`} element={<GuidesIndexPage />} />,
+    <Route key={`${prefix}guide`} path={`${prefix}guides/:slug`} element={<GuidePostPage />} />,
+    <Route key={`${prefix}services`} path={`${prefix}services`} element={<ServicesPage />} />,
+    <Route key={`${prefix}about`} path={`${prefix}about`} element={<AboutPage />} />,
+    <Route key={`${prefix}contact`} path={`${prefix}contact`} element={<ContactPage />} />,
+    <Route key={`${prefix}privacy`} path={`${prefix}privacy-policy`} element={<PrivacyPolicyPage />} />,
+    <Route key={`${prefix}terms`} path={`${prefix}terms`} element={<TermsPage />} />,
+  ]
+}
 
 /**
  * The full app tree, shared between the client entry (wrapped in
@@ -25,17 +52,8 @@ export function AppShell() {
       <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
-          <Route index element={<HomePage />} />
-          {toolPages.map((page) => (
-            <Route key={page.path} path={page.path.slice(1)} element={<ToolVariantPage />} />
-          ))}
-          <Route path="guides" element={<GuidesIndexPage />} />
-          <Route path="guides/:slug" element={<GuidePostPage />} />
-          <Route path="services" element={<ServicesPage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="terms" element={<TermsPage />} />
+          {appRouteChildren('')}
+          {nonDefaultLocaleIds.flatMap((lang) => appRouteChildren(`${lang}/`))}
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

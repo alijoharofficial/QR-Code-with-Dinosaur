@@ -2,7 +2,8 @@ import { absoluteUrl, OG_IMAGE_HEIGHT, OG_IMAGE_URL, OG_IMAGE_WIDTH, SITE_NAME }
 import { buildBreadcrumbLd, buildFaqPageLd, buildSoftwareApplicationLd } from './structuredData'
 import type { BreadcrumbEntry } from './structuredData'
 import type { FaqItem } from './faq'
-import type { RouteMeta } from './routes'
+import { alternatesFor, type RouteMeta } from './routes'
+import { defaultLanguageId } from '../i18n/languages'
 
 function escapeHtml(value: string): string {
   return value
@@ -38,6 +39,21 @@ export function buildHeadHtml({ route, softwareApplication, faqItems, breadcrumb
     `<title>${title}</title>`,
     `<meta name="description" content="${description}" />`,
     `<link rel="canonical" href="${url}" />`,
+  ]
+
+  // hreflang alternates: every language's version of this same page, plus
+  // an x-default pointing at the English (unprefixed) URL, so search
+  // engines can offer visitors the right-language result directly.
+  const alternates = alternatesFor(route.canonicalPath)
+  for (const alt of alternates) {
+    parts.push(`<link rel="alternate" hreflang="${alt.lang}" href="${absoluteUrl(alt.path)}" />`)
+  }
+  const defaultAlt = alternates.find((a) => a.lang === defaultLanguageId)
+  if (defaultAlt) {
+    parts.push(`<link rel="alternate" hreflang="x-default" href="${absoluteUrl(defaultAlt.path)}" />`)
+  }
+
+  parts.push(
     `<meta property="og:type" content="website" />`,
     `<meta property="og:site_name" content="${escapeHtml(SITE_NAME)}" />`,
     `<meta property="og:title" content="${title}" />`,
@@ -50,7 +66,7 @@ export function buildHeadHtml({ route, softwareApplication, faqItems, breadcrumb
     `<meta name="twitter:title" content="${title}" />`,
     `<meta name="twitter:description" content="${description}" />`,
     `<meta name="twitter:image" content="${OG_IMAGE_URL}" />`,
-  ]
+  )
 
   if (softwareApplication) {
     parts.push(
@@ -77,7 +93,7 @@ export function buildHeadHtml({ route, softwareApplication, faqItems, breadcrumb
 
 /**
  * Minimal head for the 404 page: a title and a noindex directive, no
- * canonical/OG/JSON-LD: a "page not found" response shouldn't claim a
+ * canonical/OG/JSON-LD; a "page not found" response shouldn't claim a
  * canonical URL or be offered for social sharing.
  */
 export function buildNotFoundHeadHtml(): string {

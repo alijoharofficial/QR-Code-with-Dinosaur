@@ -1,45 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../i18n/LanguageContext'
+import { localizedPath } from '../i18n/routing'
+import { toolPageConfigs } from '../content/registry'
 import { Tech24Link } from './Tech24Link'
 import { TECH24_HOME } from '../content/tech24'
-
-const leftColumns = [
-  {
-    heading: 'Tools',
-    links: [
-      { to: '/qr-code-with-dinosaur', label: 'QR w/ Dinosaur' },
-      { to: '/qr-code-with-logo', label: 'QR w/ Logo' },
-      { to: '/custom-qr-code', label: 'Custom QR' },
-      { to: '/qr-code-for-menu', label: 'QR for Menu' },
-      { to: '/qr-code-for-wifi', label: 'QR for WiFi' },
-    ],
-  },
-  {
-    heading: 'Resources',
-    links: [
-      { to: '/guides', label: 'Guides' },
-      { to: '/#faq', label: 'FAQ' },
-    ],
-  },
-]
-
-const rightColumns = [
-  {
-    heading: 'Services',
-    links: [
-      { to: '/services', label: 'What We Offer' },
-      { to: '/contact', label: 'Contact' },
-    ],
-  },
-  {
-    heading: 'Company',
-    links: [
-      { to: '/about', label: 'About' },
-      { to: '/privacy-policy', label: 'Privacy Policy' },
-      { to: '/terms', label: 'Terms' },
-    ],
-  },
-]
 
 function FooterColumn({ heading, links }: { heading: string; links: { to: string; label: string }[] }) {
   return (
@@ -66,7 +30,40 @@ interface FooterProps {
 }
 
 export function Footer({ showTech24Credit }: FooterProps) {
-  const { t } = useLanguage()
+  const { t, languageId, content } = useLanguage()
+  const p = (path: string) => localizedPath(path, languageId)
+
+  const leftColumns = [
+    {
+      heading: content.chrome.footerToolsHeading,
+      links: toolPageConfigs.map((config) => ({ to: p(config.path), label: content.chrome.toolShort[config.id] })),
+    },
+    {
+      heading: content.chrome.footerResourcesHeading,
+      links: [
+        { to: p('/guides'), label: content.chrome.navGuides },
+        { to: `${p('/')}#faq`, label: content.chrome.footerFaqLabel },
+      ],
+    },
+  ]
+
+  const rightColumns = [
+    {
+      heading: content.chrome.footerServicesHeading,
+      links: [
+        { to: p('/services'), label: content.chrome.footerWhatWeOffer },
+        { to: p('/contact'), label: content.chrome.footerContact },
+      ],
+    },
+    {
+      heading: content.chrome.footerCompanyHeading,
+      links: [
+        { to: p('/about'), label: content.chrome.navAbout },
+        { to: p('/privacy-policy'), label: content.chrome.footerPrivacyPolicy },
+        { to: p('/terms'), label: content.chrome.footerTerms },
+      ],
+    },
+  ]
 
   return (
     <footer className="border-t border-border">
@@ -87,7 +84,7 @@ export function Footer({ showTech24Credit }: FooterProps) {
         <p>{t('appTagline')}</p>
         {showTech24Credit && (
           <p className="mt-1">
-            Built by{' '}
+            {content.chrome.footerBuiltBy}{' '}
             <Tech24Link
               href={TECH24_HOME}
               campaign="footer"
