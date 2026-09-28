@@ -7,7 +7,7 @@ export function NotFoundPage() {
   useNotFoundHead()
 
   // The static 404.html served for any unmatched path is prerendered once,
-  // at build time, using a placeholder location — it has no way to know
+  // at build time, using a placeholder location; it has no way to know
   // the real URL a visitor hit. Reading the actual path only after mount
   // (rather than via useLocation(), which would differ between that
   // build-time render and the real browser URL) keeps the server and the

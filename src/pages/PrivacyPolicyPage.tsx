@@ -20,8 +20,8 @@ export function PrivacyPolicyPage() {
         <section>
           <h2 className="text-lg font-semibold text-text">What this tool does with your data</h2>
           <p className="mt-2">
-            Generating a QR code — including any link, WiFi password, contact
-            details, or other content you type in, and any logo image you upload —
+            Generating a QR code, including any link, WiFi password, contact
+            details, or other content you type in, and any logo image you upload,
             happens entirely in your browser. None of it is sent to, or stored on,
             any server. Closing or refreshing the page clears it.
           </p>
@@ -40,7 +40,7 @@ export function PrivacyPolicyPage() {
           <h2 className="text-lg font-semibold text-text">Analytics</h2>
           <p className="mt-2">
             This site uses Google Tag Manager and Microsoft Clarity to understand,
-            in aggregate, how the site is used — for example which pages are visited
+            in aggregate, how the site is used, for example which pages are visited
             and roughly how people interact with them. These tools may set cookies
             and collect standard technical information (such as browser type and
             approximate location derived from IP address). They do not receive

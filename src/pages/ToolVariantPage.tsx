@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { FaqSection } from '../components/FaqSection'
 import { Hero } from '../components/Hero'
 import { QrToolWidget } from '../components/QrToolWidget'
+import { WhatIsQrCode } from '../components/WhatIsQrCode'
 import { useRouteHead } from '../hooks/useRouteHead'
 import { findGuide } from '../content/guides'
 import { homeRoute, findRouteMeta } from '../content/routes'
@@ -11,7 +12,7 @@ import { findToolPage } from '../content/toolPages'
  * Renders any of the 5 tool-variant/use-case pages (/qr-code-with-dinosaur,
  * /qr-code-with-logo, /custom-qr-code, /qr-code-for-menu, /qr-code-for-wifi).
  * Each has unique H1/copy/FAQ/preset from content/toolPages.ts, but shares
- * this one template — data-driven, not duplicated per page.
+ * this one template: data-driven, not duplicated per page.
  */
 export function ToolVariantPage() {
   const { pathname } = useLocation()
@@ -28,6 +29,7 @@ export function ToolVariantPage() {
   return (
     <>
       <Hero title={page.h1} subtitle={page.subtitle} />
+      <WhatIsQrCode />
 
       <QrToolWidget {...page.preset} />
 

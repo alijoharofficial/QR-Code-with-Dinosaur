@@ -8,7 +8,7 @@ export const meta: GuideMeta = {
     'A QR code made with a free generator like this one does not expire on its own. Here is what can actually break one, and how to make sure yours keeps working.',
   h1: 'Do QR Codes Expire?',
   excerpt:
-    'The code itself never expires — but a few things can still stop it from working. Here is what actually happens.',
+    'The code itself never expires, but a few things can still stop it from working. Here is what actually happens.',
   publishedDate: '2026-09-28',
 }
 
@@ -17,7 +17,7 @@ export function Content() {
     <>
       <p>
         Short answer: no, a QR code itself does not expire. The pattern of black and
-        white squares is just a way of encoding data — it doesn't have a clock, a
+        white squares is just a way of encoding data. It doesn't have a clock, a
         server connection, or a subscription attached to it. Once it's generated, it's
         a static image, and static images don't go bad. But that's not quite the whole
         story, and the exceptions are worth understanding before you print one
@@ -27,7 +27,7 @@ export function Content() {
       <h2>Why a static QR code doesn't expire</h2>
       <p>
         A QR code made with a free tool like this one is a <strong>static</strong>{' '}
-        code: whatever you typed in — a link, a WiFi password, a contact card — is
+        code: whatever you typed in (a link, a WiFi password, a contact card) is
         encoded directly into the code's pattern. There's no third-party server
         involved in reading it. A scanner reads the pattern and reconstructs the
         original data on the spot, the same way it would have on day one. See{' '}
@@ -42,12 +42,12 @@ export function Content() {
       <h2>What actually can stop a QR code from working</h2>
       <p>
         If a QR code you made months or years ago suddenly "stops working," the code
-        itself almost never changed — one of these did instead:
+        itself almost never changed. One of these did instead:
       </p>
       <ul>
         <li>
           <strong>The destination went away.</strong> If the code encodes a link,
-          scanning it still works fine — the phone just lands on a broken page if that
+          scanning it still works fine, but the phone just lands on a broken page if that
           website, product listing, or menu link was taken down or moved. This is by
           far the most common cause, and it's not really the QR code "expiring"; it's
           the page behind it disappearing.
@@ -65,7 +65,7 @@ export function Content() {
         </li>
         <li>
           <strong>The physical copy degraded.</strong> A faded, torn, or heavily
-          scratched printout can become unscannable — this isn't the code "expiring"
+          scratched printout can become unscannable. This isn't the code "expiring"
           either, just ordinary wear on the material it's printed on.
         </li>
       </ul>
@@ -78,7 +78,7 @@ export function Content() {
         </li>
         <li>
           <strong>Keep your domain renewed</strong> if the code points to your own
-          site — set it to auto-renew if your registrar supports it.
+          site, set it to auto-renew if your registrar supports it.
         </li>
         <li>
           <strong>Prefer static over dynamic</strong> for anything you want to last
@@ -86,7 +86,7 @@ export function Content() {
           analytics or the ability to redirect the code elsewhere later.
         </li>
         <li>
-          <strong>Print at a reasonable size and protect it</strong> — laminate or
+          <strong>Print at a reasonable size and protect it.</strong> Laminate or
           seal codes that will be handled often or exposed to weather.
         </li>
         <li>

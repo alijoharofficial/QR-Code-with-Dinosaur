@@ -16,6 +16,10 @@ export interface QrTypeConfig {
   labelKey: TranslationKey
   fields: QrField[]
   build: (values: Record<string, string>) => string | null
+  /** Shown in the preview the instant this type is picked, before any field
+   * is filled in, so switching types visibly changes the code right away
+   * instead of leaving the same generic placeholder on screen. */
+  samplePlaceholder: string
 }
 
 const digitsOnly = (s: string) => s.replace(/[^\d+]/g, '').replace(/(?!^)\+/g, '')
@@ -31,7 +35,7 @@ const escapeWifi = (s: string) =>
 // this, a value containing a raw newline (e.g. pasted into a textarea)
 // would terminate the current property early and let the rest of the
 // input be parsed as one or more *new* vCard/iCalendar properties by
-// whatever app scans the resulting QR code — a structured-data / field
+// whatever app scans the resulting QR code: a structured-data / field
 // injection into someone else's contacts or calendar app.
 const escapeStructuredText = (s: string) =>
   s.replace(/\\/g, '\\\\').replace(/[,;]/g, '\\$&').replace(/\r\n|\r|\n/g, '\\n')
@@ -52,6 +56,7 @@ export const qrTypes: QrTypeConfig[] = [
       const r = normalizeUrl(v.url || '')
       return r.ok ? r.url : null
     },
+    samplePlaceholder: 'https://qr-code-generator.app',
   },
   {
     id: 'whatsapp',
@@ -66,6 +71,7 @@ export const qrTypes: QrTypeConfig[] = [
       const text = v.message ? `?text=${encodeURIComponent(v.message)}` : ''
       return `https://wa.me/${digits}${text}`
     },
+    samplePlaceholder: 'https://wa.me/15551234567',
   },
   {
     id: 'vcard',
@@ -94,6 +100,7 @@ export const qrTypes: QrTypeConfig[] = [
       ].filter(Boolean)
       return lines.join('\n')
     },
+    samplePlaceholder: 'BEGIN:VCARD\nFN:Jane Doe\nEND:VCARD',
   },
   {
     id: 'wifi',
@@ -121,6 +128,7 @@ export const qrTypes: QrTypeConfig[] = [
       const pass = enc === 'nopass' ? '' : `P:${escapeWifi(v.password || '')};`
       return `WIFI:T:${enc};S:${escapeWifi(v.ssid)};${pass}${hidden};`
     },
+    samplePlaceholder: 'WIFI:T:WPA;S:MyNetwork;P:password;;',
   },
   {
     id: 'email',
@@ -137,6 +145,7 @@ export const qrTypes: QrTypeConfig[] = [
       if (v.message) params.push(`body=${encodeURIComponent(v.message)}`)
       return `mailto:${v.email}${params.length ? `?${params.join('&')}` : ''}`
     },
+    samplePlaceholder: 'mailto:hello@example.com',
   },
   {
     id: 'location',
@@ -148,6 +157,7 @@ export const qrTypes: QrTypeConfig[] = [
       if (!v.query?.trim()) return null
       return `https://maps.google.com/?q=${encodeURIComponent(v.query)}`
     },
+    samplePlaceholder: 'https://maps.google.com/?q=Central+Park',
   },
   {
     id: 'product',
@@ -160,6 +170,7 @@ export const qrTypes: QrTypeConfig[] = [
       const r = normalizeUrl(v.url || '')
       return r.ok ? r.url : null
     },
+    samplePlaceholder: 'https://shop.example.com/product/123',
   },
   {
     id: 'appInstall',
@@ -169,6 +180,7 @@ export const qrTypes: QrTypeConfig[] = [
       const r = normalizeUrl(v.url || '')
       return r.ok ? r.url : null
     },
+    samplePlaceholder: 'https://apps.apple.com/app/example',
   },
   {
     id: 'event',
@@ -201,6 +213,7 @@ export const qrTypes: QrTypeConfig[] = [
       ].filter(Boolean)
       return lines.join('\n')
     },
+    samplePlaceholder: 'BEGIN:VEVENT\nSUMMARY:Sample Event\nEND:VEVENT',
   },
   {
     id: 'pdf',
@@ -210,6 +223,7 @@ export const qrTypes: QrTypeConfig[] = [
       const r = normalizeUrl(v.url || '')
       return r.ok ? r.url : null
     },
+    samplePlaceholder: 'https://example.com/menu.pdf',
   },
 ]
 

@@ -5,7 +5,7 @@ export const meta: GuideMeta = {
   slug: 'how-to-make-qr-with-logo',
   title: 'How to Make a QR Code with a Logo (Free Guide)',
   description:
-    'Learn how to make a QR code with a logo in the middle that still scans reliably, step by step — including error correction, sizing, and contrast tips.',
+    'Learn how to make a QR code with a logo in the middle that still scans reliably, step by step, including error correction, sizing, and contrast tips.',
   h1: 'How to Make a QR Code with a Logo',
   excerpt:
     'A logo in the center makes a QR code instantly recognizable as yours. Here is how to add one without breaking scannability.',
@@ -17,7 +17,7 @@ export function Content() {
     <>
       <p>
         A plain black-and-white QR code works, but it does not look like it belongs to
-        anyone. Drop your logo — or a fun icon like a little dinosaur — into the center
+        anyone. Drop your logo, or a fun icon like a little dinosaur, into the center
         and the same code instantly feels like part of your brand or your event. The
         good news is that a <strong>qr code with logo</strong> is not harder to make
         than a plain one, as long as you understand the one rule that actually matters:
@@ -28,8 +28,8 @@ export function Content() {
       <p>
         QR codes are built with an error-correction layer baked into the standard
         itself. Depending on the level chosen when the code is generated, a QR code can
-        lose anywhere from about 7% to about 30% of its pattern — covered by a logo,
-        smudged, printed on a wrinkled surface — and a scanner can still reconstruct
+        lose anywhere from about 7% to about 30% of its pattern (covered by a logo,
+        smudged, printed on a wrinkled surface) and a scanner can still reconstruct
         the original data. The highest level, called Level H, tolerates roughly 30%
         damage or obstruction. That 30% margin is exactly what makes putting a logo in
         the middle of a QR code safe, provided the generator you use actually sets that
@@ -40,8 +40,8 @@ export function Content() {
       <ol>
         <li>
           <strong>Choose what the QR code should do.</strong> On the{' '}
-          <Link to="/qr-code-with-logo">logo QR code generator</Link>, pick a type — a
-          website link, a WiFi network, a contact card, and so on — and fill in the
+          <Link to="/qr-code-with-logo">logo QR code generator</Link>, pick a type (a
+          website link, a WiFi network, a contact card, and so on) and fill in the
           details.
         </li>
         <li>
@@ -53,7 +53,7 @@ export function Content() {
           <strong>Check the preview.</strong> The logo sits inside a protected white
           circle in the middle of the code automatically, so it never touches the
           finder squares (the three big corner squares a scanner uses to orient
-          itself) — those are the one part of a QR code that should never be covered.
+          itself); those are the one part of a QR code that should never be covered.
         </li>
         <li>
           <strong>Pick colors and download.</strong> Adjust the dot style and color
@@ -80,7 +80,7 @@ export function Content() {
         </li>
         <li>
           <strong>Leave the quiet zone alone.</strong> The blank margin around the
-          outside of a QR code is not wasted space — scanners use it to detect where
+          outside of a QR code is not wasted space; scanners use it to detect where
           the code starts and ends. Don't crop it tightly when placing the code in a
           design.
         </li>
@@ -88,7 +88,7 @@ export function Content() {
 
       <h2>Common mistakes</h2>
       <p>
-        The most common failure is not the logo itself — it is using a QR generator
+        The most common failure is not the logo itself. It is using a QR generator
         that does not raise the error-correction level when a logo is added. If you
         have ever scanned a logo QR code that just wouldn't read, that is almost always
         why. The second most common mistake is picking near-identical colors for the
@@ -97,7 +97,7 @@ export function Content() {
       </p>
       <p>
         Once those two things are handled, a QR code with a logo is just as reliable
-        as a plain one — and considerably more memorable. Try it in our{' '}
+        as a plain one, and considerably more memorable. Try it in our{' '}
         <Link to="/qr-code-with-logo">logo QR generator →</Link>
       </p>
     </>

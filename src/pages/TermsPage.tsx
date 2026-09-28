@@ -30,7 +30,7 @@ export function TermsPage() {
           <h2 className="text-lg font-semibold text-text">Your responsibility</h2>
           <p className="mt-2">
             You are responsible for the content you encode into a QR code and for
-            testing that a generated code scans correctly before relying on it —
+            testing that a generated code scans correctly before relying on it,
             for example, before printing it at scale. We recommend scanning a code
             with more than one device before distributing it widely.
           </p>

@@ -17,7 +17,7 @@ export const homeRoute: RouteMeta = {
   path: '/',
   title: 'QR Code Generator with a Dinosaur Logo | Custom & Free',
   description:
-    'Make a free custom QR code with a dinosaur logo, animal icon, or your own image. Cute, scannable QR codes in seconds — no signup, works offline.',
+    'Make a free custom QR code with a dinosaur logo, animal icon, or your own image. Cute, scannable QR codes in seconds, no signup, works offline.',
   priority: 1.0,
   lastmod: SITE_LAST_UPDATED,
 }
@@ -35,7 +35,7 @@ export const guidesIndexRoute: RouteMeta = {
   path: '/guides',
   title: 'QR Code Guides & Tips | QR Code Generator',
   description:
-    'Practical, original guides on QR codes: adding a logo, static vs dynamic codes, whether they expire, and QR codes for small business — all free to read.',
+    'Practical, original guides on QR codes: adding a logo, static vs dynamic codes, whether they expire, and QR codes for small business. All free to read.',
   priority: 0.7,
   lastmod: SITE_LAST_UPDATED,
 }
@@ -71,7 +71,7 @@ export const contactRoute: RouteMeta = {
   path: '/contact',
   title: 'Contact | QR Code Generator',
   description:
-    'Get in touch about this free QR code generator — questions, feedback, or bug reports welcome.',
+    'Get in touch about this free QR code generator: questions, feedback, or bug reports welcome.',
   priority: 0.5,
   lastmod: SITE_LAST_UPDATED,
 }
