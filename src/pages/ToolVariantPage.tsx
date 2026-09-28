@@ -2,7 +2,6 @@ import { Link, useLocation } from 'react-router-dom'
 import { FaqSection } from '../components/FaqSection'
 import { Hero } from '../components/Hero'
 import { QrToolWidget } from '../components/QrToolWidget'
-import { WhatIsQrCode } from '../components/WhatIsQrCode'
 import { useLanguage } from '../i18n/LanguageContext'
 import { localizedPath, stripLocalePrefix } from '../i18n/routing'
 import { useRouteHead } from '../hooks/useRouteHead'
@@ -31,7 +30,6 @@ export function ToolVariantPage() {
   return (
     <>
       <Hero title={copy.h1} subtitle={copy.subtitle} />
-      <WhatIsQrCode />
 
       <QrToolWidget {...config.preset} />
 

@@ -8,7 +8,6 @@ import { IntroSection } from '../components/IntroSection'
 import { QrToolWidget } from '../components/QrToolWidget'
 import { SupportSection } from '../components/SupportSection'
 import { TopToolsSection } from '../components/TopToolsSection'
-import { WhatIsQrCode } from '../components/WhatIsQrCode'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useRouteHead } from '../hooks/useRouteHead'
 import { findRouteMeta } from '../content/routes'
@@ -31,7 +30,6 @@ export function HomePage() {
       <IntroSection>
         {content.home.introPrefix} <strong className="text-text">{content.home.introBold}</strong> {content.home.introSuffix}
       </IntroSection>
-      <WhatIsQrCode />
 
       <QrToolWidget />
 
