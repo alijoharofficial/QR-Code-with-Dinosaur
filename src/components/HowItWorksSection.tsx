@@ -1,7 +1,7 @@
 const steps = [
   {
     title: 'Choose what it does',
-    body: 'Pick a type — a website link, WiFi network, contact card, menu, and more — and fill in the details.',
+    body: 'Pick a type: a website link, WiFi network, contact card, menu, and more, and fill in the details.',
   },
   {
     title: 'Pick an icon or logo',
@@ -23,23 +23,26 @@ export function HowItWorksSection() {
       className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6"
       aria-labelledby="how-it-works-heading"
     >
-      <h2 id="how-it-works-heading" className="text-center text-2xl font-bold text-text">
-        How it works
-      </h2>
-      <ol className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {steps.map((step, index) => (
-          <li
-            key={step.title}
-            className="rounded-2xl border border-border bg-surface p-5"
-          >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-sm font-bold text-accent-contrast">
-              {index + 1}
-            </span>
-            <h3 className="mt-3 font-semibold text-text">{step.title}</h3>
-            <p className="mt-1.5 text-sm text-muted">{step.body}</p>
-          </li>
-        ))}
-      </ol>
+      <div className="rounded-3xl bg-surface-muted p-6 sm:p-10">
+        <h2 id="how-it-works-heading" className="text-center text-2xl font-bold text-text">
+          How it works
+        </h2>
+        <ol className="relative mt-10 grid gap-8 sm:grid-cols-4 sm:gap-4">
+          <div
+            aria-hidden="true"
+            className="absolute left-0 right-0 top-4 hidden h-px bg-border sm:block"
+          />
+          {steps.map((step, index) => (
+            <li key={step.title} className="relative text-center">
+              <span className="relative z-10 mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-accent text-sm font-bold text-accent-contrast ring-4 ring-surface-muted">
+                {index + 1}
+              </span>
+              <h3 className="mt-3 font-semibold text-text">{step.title}</h3>
+              <p className="mt-1.5 text-sm text-muted">{step.body}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
     </section>
   )
 }

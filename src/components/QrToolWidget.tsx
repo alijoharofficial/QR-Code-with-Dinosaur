@@ -17,8 +17,6 @@ import { QrTypePicker } from './QrTypePicker'
 import { StylePicker } from './StylePicker'
 import { UrlForm } from './UrlForm'
 
-const PLACEHOLDER_URL = 'https://qr-code-generator.app'
-
 export interface QrToolWidgetProps {
   /** Defaults the tool to a QR type other than "url" (e.g. "wifi"). */
   initialQrTypeId?: string
@@ -31,7 +29,7 @@ export interface QrToolWidgetProps {
 }
 
 /**
- * The interactive QR generator itself — type picker, fields, icon/style/
+ * The interactive QR generator itself: type picker, fields, icon/style/
  * shape/color pickers, and the live preview. Used on the homepage and every
  * themed tool-variant/use-case page with different initial presets; the
  * generator is otherwise identical and fully client-side after hydration.
@@ -69,12 +67,12 @@ export function QrToolWidget({
   // This mirrors React's "adjust state during render" pattern instead of
   // an effect, since we need to conditionally skip the update.
   const [committedInput, setCommittedInput] = useState(debouncedInput)
-  const [qrValue, setQrValue] = useState(PLACEHOLDER_URL)
+  const [qrValue, setQrValue] = useState(findQrType(initialQrTypeId).samplePlaceholder)
   if (isUrlType && debouncedInput !== committedInput) {
     setCommittedInput(debouncedInput)
     const trimmed = debouncedInput.trim()
     if (!trimmed) {
-      setQrValue(PLACEHOLDER_URL)
+      setQrValue(findQrType(qrTypeId).samplePlaceholder)
     } else {
       const result = normalizeUrl(debouncedInput)
       if (result.ok) setQrValue(result.url)
@@ -89,7 +87,7 @@ export function QrToolWidget({
   const [committedFieldValues, setCommittedFieldValues] = useState(debouncedFieldValues)
   if (!isUrlType && debouncedFieldValues !== committedFieldValues) {
     setCommittedFieldValues(debouncedFieldValues)
-    setQrValue(builtValue || PLACEHOLDER_URL)
+    setQrValue(builtValue || findQrType(qrTypeId).samplePlaceholder)
   }
 
   const handleGenerate = () => {
@@ -104,7 +102,9 @@ export function QrToolWidget({
     setQrTypeId(id)
     setRawInput('')
     setFieldValues({})
-    setQrValue(PLACEHOLDER_URL)
+    setCommittedInput('')
+    setCommittedFieldValues({})
+    setQrValue(findQrType(id).samplePlaceholder)
   }
 
   const handleFieldChange = (id: string, value: string) => {

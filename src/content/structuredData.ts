@@ -13,7 +13,7 @@ export function buildSoftwareApplicationLd(options?: {
     url: absoluteUrl(options?.path ?? '/'),
     description:
       options?.description ??
-      'Free QR code generator with cute animal icons — including a dinosaur, monkey, and tiger — or your own logo. Customize colors, dot style, and shape, then download as PNG or SVG. Runs entirely in your browser, no signup required.',
+      'Free QR code generator with cute animal icons, including a dinosaur, monkey, and tiger, or your own logo. Customize colors, dot style, and shape, then download as PNG or SVG. Runs entirely in your browser, no signup required.',
     applicationCategory: 'BrowserApplication',
     operatingSystem: 'Any',
     offers: {

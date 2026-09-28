@@ -1,5 +1,5 @@
 /**
- * Client-side content protection — DETERRENT ONLY.
+ * Client-side content protection (deterrent only).
  *
  * None of this is real security. Anyone can disable JavaScript, use a
  * browser extension, use `curl`/devtools' Network tab, or simply view the
@@ -7,7 +7,7 @@
  * purely to raise the bar for casual right-click "view source" / copy /
  * devtools use, matching what the app's own security audit asked for as an
  * additional deterrent layer. The real security boundary for this app is
- * that it has no backend, no secrets, and no user data to protect — see
+ * that it has no backend, no secrets, and no user data to protect; see
  * SECURITY_AUDIT_REPORT.md.
  *
  * Only active in production builds; set VITE_DISABLE_CONTENT_PROTECTION=true

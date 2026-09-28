@@ -33,8 +33,8 @@ export function IconPicker({
     // Defense in depth: the `accept="image/*"` on the file input is only a
     // picker hint and is trivially bypassed (drag-and-drop, renamed files),
     // so re-validate the actual file here before it's read into memory and
-    // handed to the QR renderer. Everything stays local to the browser —
-    // nothing is uploaded to a server — this just guards against an
+    // handed to the QR renderer. Everything stays local to the browser;
+    // nothing is uploaded to a server. This just guards against an
     // oversized or non-image file wedging the tab.
     if (!file.type.startsWith('image/')) {
       setUploadError(t('uploadErrorType'))

@@ -1,4 +1,4 @@
-/** Canonical site origin — always the WWW form, no trailing slash. */
+/** Canonical site origin: always the WWW form, no trailing slash. */
 export const SITE_URL = 'https://www.qrcodegenerator.us'
 
 export const SITE_NAME = 'QR Code Generator'

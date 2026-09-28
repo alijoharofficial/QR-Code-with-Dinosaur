@@ -15,7 +15,7 @@ export function GuidesIndexPage() {
         QR Code Guides &amp; Tips
       </h1>
       <p className="mt-3 max-w-2xl text-balance text-muted">
-        Practical, original guides on getting the most out of QR codes — from adding a
+        Practical, original guides on getting the most out of QR codes, from adding a
         logo without breaking scannability to picking the right kind of code for your
         use case.
       </p>

@@ -3,7 +3,7 @@ import { useLanguage } from '../i18n/LanguageContext'
 import { Tech24Link } from './Tech24Link'
 import { TECH24_HOME } from '../content/tech24'
 
-const columns = [
+const leftColumns = [
   {
     heading: 'Tools',
     links: [
@@ -21,20 +21,46 @@ const columns = [
       { to: '/#faq', label: 'FAQ' },
     ],
   },
+]
+
+const rightColumns = [
+  {
+    heading: 'Services',
+    links: [
+      { to: '/services', label: 'What We Offer' },
+      { to: '/contact', label: 'Contact' },
+    ],
+  },
   {
     heading: 'Company',
     links: [
       { to: '/about', label: 'About' },
-      { to: '/contact', label: 'Contact' },
       { to: '/privacy-policy', label: 'Privacy Policy' },
       { to: '/terms', label: 'Terms' },
     ],
   },
 ]
 
+function FooterColumn({ heading, links }: { heading: string; links: { to: string; label: string }[] }) {
+  return (
+    <div>
+      <h3 className="text-sm font-semibold text-text">{heading}</h3>
+      <ul className="mt-3 space-y-2">
+        {links.map((link) => (
+          <li key={link.to}>
+            <Link to={link.to} className="text-sm text-muted transition-colors hover:text-accent">
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 interface FooterProps {
-  /** The homepage never shows the TECH24 credit line, by explicit design —
-   * it should read as a standalone free tool, not an agency product. Every
+  /** The homepage never shows the TECH24 credit line, by explicit design.
+   * It should read as a standalone free tool, not an agency product. Every
    * other page shows the one small, muted line. */
   showTech24Credit: boolean
 }
@@ -44,21 +70,17 @@ export function Footer({ showTech24Credit }: FooterProps) {
 
   return (
     <footer className="border-t border-border">
-      <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
-        {columns.map((column) => (
-          <div key={column.heading}>
-            <h3 className="text-sm font-semibold text-text">{column.heading}</h3>
-            <ul className="mt-3 space-y-2">
-              {column.links.map((link) => (
-                <li key={link.to}>
-                  <Link to={link.to} className="text-sm text-muted transition-colors hover:text-accent">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-4 py-12 sm:px-6 sm:flex-row sm:justify-between sm:gap-6">
+        <div className="grid grid-cols-2 gap-8 sm:flex sm:gap-12">
+          {leftColumns.map((column) => (
+            <FooterColumn key={column.heading} heading={column.heading} links={column.links} />
+          ))}
+        </div>
+        <div className="grid grid-cols-2 gap-8 sm:flex sm:gap-12">
+          {rightColumns.map((column) => (
+            <FooterColumn key={column.heading} heading={column.heading} links={column.links} />
+          ))}
+        </div>
       </div>
 
       <div className="border-t border-border px-4 py-6 text-center text-sm text-muted sm:px-6">

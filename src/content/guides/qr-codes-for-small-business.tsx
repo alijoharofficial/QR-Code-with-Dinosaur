@@ -5,7 +5,7 @@ export const meta: GuideMeta = {
   slug: 'qr-codes-for-small-business',
   title: 'QR Codes for Small Business: 6 Practical Uses',
   description:
-    'From payment links to packaging, business cards to reviews — practical, low-cost ways a small business can put a free QR code to work.',
+    'From payment links to packaging, business cards to reviews: practical, low-cost ways a small business can put a free QR code to work.',
   h1: 'QR Codes for Small Business',
   excerpt:
     'Practical, low-cost ways a small business can put a QR code to work, beyond the obvious menu.',
@@ -18,7 +18,7 @@ export function Content() {
       <p>
         A QR code is one of the cheapest marketing tools a small business has: free to
         generate, free to print alongside whatever you're already printing, and it
-        turns any physical surface — a receipt, a window sticker, a package — into a
+        turns any physical surface (a receipt, a window sticker, a package) into a
         link to something online. Two of the most common uses, menus and WiFi access,
         have their own dedicated tools here: see{' '}
         <Link to="/qr-code-for-menu">QR codes for menus</Link> and{' '}
@@ -30,7 +30,7 @@ export function Content() {
       <p>
         A code that opens a payment link or a tip page is common on receipts, at
         counters, or on delivery packaging. Keep this one especially high-contrast and
-        test it thoroughly — customers give up quickly on a code that doesn't scan on
+        test it thoroughly, since customers give up quickly on a code that doesn't scan on
         the first try when money is involved.
       </p>
 
@@ -46,14 +46,14 @@ export function Content() {
       <p>
         A QR code on a business card that encodes a contact card (this tool has a
         dedicated type for that) lets someone save your name, number, and email to
-        their phone with one scan instead of typing it in by hand later — which is
+        their phone with one scan instead of typing it in by hand later, which is
         also exactly when most hand-typed contacts never actually get saved.
       </p>
 
       <h2>4. Product packaging</h2>
       <p>
         A code on packaging can link to care instructions, a warranty registration,
-        an ingredient or allergen list, or a "how to use this" video — information
+        an ingredient or allergen list, or a "how to use this" video: information
         that would otherwise need a printed insert. It's also a natural way to link to
         a review page after a purchase.
       </p>
@@ -69,7 +69,7 @@ export function Content() {
       <p>
         A generic QR code looks like it could belong to anyone. Picking a distinct
         icon or uploading your logo makes your codes recognizable at a glance across
-        receipts, packaging, and signage — try the{' '}
+        receipts, packaging, and signage. Try the{' '}
         <Link to="/custom-qr-code">custom QR code generator</Link> to match your
         brand's colors and style, or the{' '}
         <Link to="/qr-code-with-logo">logo generator</Link> to use your own logo
@@ -81,7 +81,7 @@ export function Content() {
         <li>Scan every code with at least two different phones first.</li>
         <li>Keep contrast high and avoid covering the three corner squares.</li>
         <li>
-          Remember these are static codes — see{' '}
+          Remember these are static codes. See{' '}
           <Link to="/guides/static-vs-dynamic-qr-codes">
             static vs. dynamic QR codes
           </Link>{' '}

@@ -33,8 +33,8 @@ export function render(url: string) {
 
   const route = findRouteMeta(url)
   if (!route) {
-    // Shouldn't happen — the prerender script only ever calls render() with
-    // paths from allRoutes — but fail loudly instead of shipping a page
+    // Shouldn't happen: the prerender script only ever calls render() with
+    // paths from allRoutes. But fail loudly instead of shipping a page
     // with no <title>/meta if the route list and prerender list ever drift.
     throw new Error(`No route metadata registered for prerendered path: ${url}`)
   }

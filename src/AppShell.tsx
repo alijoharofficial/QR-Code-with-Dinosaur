@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { LanguageProvider } from './i18n/LanguageContext'
 import { Layout } from './components/Layout'
+import { ScrollToTop } from './components/ScrollToTop'
 import { AboutPage } from './pages/AboutPage'
 import { ContactPage } from './pages/ContactPage'
 import { GuidesIndexPage } from './pages/GuidesIndexPage'
@@ -16,11 +17,12 @@ import { toolPages } from './content/toolPages'
 /**
  * The full app tree, shared between the client entry (wrapped in
  * BrowserRouter) and the server entry (wrapped in StaticRouter for
- * prerendering) — only the router differs per entry.
+ * prerendering); only the router differs per entry.
  */
 export function AppShell() {
   return (
     <LanguageProvider>
+      <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />

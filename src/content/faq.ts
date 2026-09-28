@@ -4,7 +4,7 @@ export interface FaqItem {
 }
 
 /**
- * Single source of truth for the homepage FAQ — rendered on-page by
+ * Single source of truth for the homepage FAQ, rendered on-page by
  * FaqSection AND used to build the matching FAQPage JSON-LD, so the two
  * never drift out of sync.
  */
@@ -12,7 +12,7 @@ export const homeFaq: FaqItem[] = [
   {
     question: 'Is this QR code generator really free?',
     answer:
-      'Yes. Every QR code you make here is completely free, with no signup, no watermark, and no limit on how many you create. There is no premium tier hiding better features — the dinosaur, monkey, and tiger icons, every color and dot style, and both download formats are free for anyone.',
+      'Yes. Every QR code you make here is completely free, with no signup, no watermark, and no limit on how many you create. There is no premium tier hiding better features: the dinosaur, monkey, and tiger icons, every color and dot style, and both download formats are free for anyone.',
   },
   {
     question: 'Does it work offline?',
@@ -22,7 +22,7 @@ export const homeFaq: FaqItem[] = [
   {
     question: 'Can I add a logo or a dinosaur icon to my QR code?',
     answer:
-      'Yes — that is the whole idea. Pick one of the built-in animal icons (a pixel-art dinosaur, a monkey, or a tiger), a social or action icon, or upload your own logo image. It sits in a protected white safe zone in the center of the code, and the QR is generated with high error correction so it still scans cleanly.',
+      'Yes, that is the whole idea. Pick one of the built-in animal icons (a pixel-art dinosaur, a monkey, or a tiger), a social or action icon, or upload your own logo image. It sits in a protected white safe zone in the center of the code, and the QR is generated with high error correction so it still scans cleanly.',
   },
   {
     question: 'Are the QR codes permanent, or do they expire?',
@@ -32,7 +32,7 @@ export const homeFaq: FaqItem[] = [
   {
     question: 'What file formats can I download my QR code in?',
     answer:
-      'You can download as a PNG, which is the easiest format for sharing online or printing at a fixed size, or as an SVG, a vector format that stays perfectly crisp no matter how large you print it — useful for banners, signage, or packaging. You can also copy the PNG straight to your clipboard.',
+      'You can download as a PNG, which is the easiest format for sharing online or printing at a fixed size, or as an SVG, a vector format that stays perfectly crisp no matter how large you print it. Useful for banners, signage, or packaging. You can also copy the PNG straight to your clipboard.',
   },
   {
     question: 'Do I need to create an account or install an app?',
@@ -42,7 +42,7 @@ export const homeFaq: FaqItem[] = [
   {
     question: 'Is my data or uploaded logo sent to a server?',
     answer:
-      'No. Everything — encoding your data, styling the QR code, and reading an uploaded logo file — happens locally in your browser. Nothing you type or upload is transmitted to a server or stored anywhere.',
+      'No. Everything, encoding your data, styling the QR code, and reading an uploaded logo file, happens locally in your browser. Nothing you type or upload is transmitted to a server or stored anywhere.',
   },
   {
     question: 'Will a QR code with a cute icon or logo still scan reliably?',
