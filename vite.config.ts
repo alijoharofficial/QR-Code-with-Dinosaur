@@ -4,9 +4,9 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Relative base so the built assets resolve correctly whether the app is
-  // served from a domain root (Vercel/Netlify) or a subpath (GitHub Pages
-  // project sites, e.g. https://<user>.github.io/<repo>/).
-  base: './',
+  // Absolute base: the site is served from a domain root (Vercel), and
+  // prerendered routes live at varying depths (e.g. /blog/<slug>/index.html),
+  // so a relative base would resolve asset URLs incorrectly on those pages.
+  base: '/',
   plugins: [react(), tailwindcss()],
 })

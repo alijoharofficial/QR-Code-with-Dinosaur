@@ -1,8 +1,8 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import './index.css'
-import App from './App.tsx'
-import { LanguageProvider } from './i18n/LanguageContext.tsx'
+import { AppShell } from './AppShell.tsx'
 import { initContentProtection } from './lib/contentProtection.ts'
 
 // Deterrent-only content protection (disable right-click/devtools
@@ -13,10 +13,20 @@ if (import.meta.env.PROD && import.meta.env.VITE_DISABLE_CONTENT_PROTECTION !== 
   initContentProtection()
 }
 
-createRoot(document.getElementById('root')!).render(
+const container = document.getElementById('root')!
+const app = (
   <StrictMode>
-    <LanguageProvider>
-      <App />
-    </LanguageProvider>
-  </StrictMode>,
+    <BrowserRouter>
+      <AppShell />
+    </BrowserRouter>
+  </StrictMode>
 )
+
+// Prerendered production builds ship real markup inside #root, which needs
+// hydrateRoot; `vite dev` (no prerender step) starts from an empty #root, so
+// fall back to a plain client render there instead of a hydration mismatch.
+if (container.hasChildNodes()) {
+  hydrateRoot(container, app)
+} else {
+  createRoot(container).render(app)
+}

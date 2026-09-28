@@ -2,7 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.qrcodegenerator.us/</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/blog</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/blog/how-to-make-a-qr-code-with-a-logo</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/blog/qr-codes-for-restaurant-menus</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/blog/qr-codes-for-wedding-invitations</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/blog/static-vs-dynamic-qr-codes</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/blog/how-to-make-a-cute-qr-code-that-still-scans</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.qrcodegenerator.us/blog/best-uses-of-qr-codes-for-small-businesses</loc>
+    <lastmod>2026-09-28</lastmod>
+    <priority>0.7</priority>
   </url>
 </urlset>
