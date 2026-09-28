@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      }
+      body {
+        position: relative;
+        background: linear-gradient(135deg, #166534 0%, #16a34a 60%, #22c55e 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .corner-mark {
+        position: absolute;
+        border: 6px solid rgba(255, 255, 255, 0.22);
+        border-radius: 14px;
+      }
+      .card {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 56px;
+        background: #ffffff;
+        border-radius: 32px;
+        padding: 56px 72px;
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+      }
+      .qr-frame {
+        width: 220px;
+        height: 220px;
+        border-radius: 24px;
+        background: #ffffff;
+        border: 3px solid #dbe5dd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .text h1 {
+        font-size: 56px;
+        font-weight: 800;
+        color: #14231a;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+      }
+      .text h1 span {
+        color: #16a34a;
+      }
+      .text p {
+        margin-top: 18px;
+        font-size: 26px;
+        color: #5b6a60;
+        max-width: 560px;
+        line-height: 1.4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="corner-mark" style="top: 36px; left: 36px; width: 64px; height: 64px"></div>
+    <div class="corner-mark" style="top: 36px; right: 36px; width: 64px; height: 64px"></div>
+    <div class="corner-mark" style="bottom: 36px; left: 36px; width: 64px; height: 64px"></div>
+
+    <div class="card">
+      <div class="qr-frame">
+        <svg viewBox="0 0 120 120" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" stroke="#16a34a" stroke-width="7">
+            <rect x="8" y="8" width="30" height="30" rx="6" />
+            <rect x="82" y="8" width="30" height="30" rx="6" />
+            <rect x="8" y="82" width="30" height="30" rx="6" />
+          </g>
+          <g fill="#16a34a">
+            <rect x="18" y="18" width="10" height="10" />
+            <rect x="92" y="18" width="10" height="10" />
+            <rect x="18" y="92" width="10" height="10" />
+          </g>
+          <g fill="#14231a" shape-rendering="crispEdges">
+            <rect x="64" y="18" width="16" height="4" />
+            <rect x="60" y="22" width="20" height="4" />
+            <rect x="60" y="26" width="4" height="4" />
+            <rect x="72" y="26" width="14" height="4" />
+            <rect x="60" y="30" width="20" height="4" />
+            <rect x="60" y="34" width="20" height="4" />
+            <rect x="60" y="38" width="20" height="4" />
+            <rect x="60" y="42" width="16" height="4" />
+            <rect x="56" y="46" width="10" height="4" />
+            <rect x="48" y="50" width="14" height="4" />
+            <rect x="44" y="54" width="20" height="4" />
+            <rect x="40" y="58" width="18" height="4" />
+            <rect x="40" y="62" width="28" height="4" />
+            <rect x="40" y="66" width="28" height="4" />
+            <rect x="44" y="70" width="24" height="4" />
+            <rect x="48" y="74" width="22" height="4" />
+            <rect x="52" y="78" width="18" height="4" />
+            <rect x="56" y="82" width="14" height="4" />
+            <rect x="60" y="86" width="6" height="4" />
+            <rect x="60" y="90" width="4" height="4" />
+            <rect x="60" y="94" width="4" height="4" />
+            <rect x="60" y="98" width="4" height="4" />
+          </g>
+        </svg>
+      </div>
+      <div class="text">
+        <h1>QR Code<br />Generator<br />with a <span>Dinosaur</span></h1>
+        <p>Free custom QR codes with cute animal icons or your own logo. No signup, works offline.</p>
+      </div>
+    </div>
+  </body>
+</html>

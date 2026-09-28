@@ -137,9 +137,143 @@ body {
   animation: qr-scan 2.4s ease-in-out infinite;
 }
 
+@keyframes nf-scan {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(140px);
+    opacity: 0;
+  }
+}
+
+.nf-scan {
+  animation: nf-scan 2.8s ease-in-out infinite;
+}
+
+@keyframes nf-wobble {
+  0%,
+  100% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
+.nf-dino {
+  animation: nf-wobble 2.6s ease-in-out infinite;
+  transform-origin: 50% 85%;
+}
+
+@keyframes nf-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.nf-bounce {
+  animation: nf-bounce 1.6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .brand-scan-line {
+  .brand-scan-line,
+  .nf-scan {
     animation: none;
     opacity: 0;
   }
+  .nf-dino,
+  .nf-bounce {
+    animation: none;
+  }
+}
+
+.article-content {
+  color: var(--app-text-muted);
+  line-height: 1.75;
+}
+
+.article-content > * + * {
+  margin-top: 1.1em;
+}
+
+.article-content h2 {
+  margin-top: 1.75em;
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--app-text);
+}
+
+.article-content ul,
+.article-content ol {
+  padding-left: 1.375em;
+}
+
+.article-content ul {
+  list-style: disc;
+}
+
+.article-content ol {
+  list-style: decimal;
+}
+
+.article-content li + li {
+  margin-top: 0.5em;
+}
+
+.article-content li > ul,
+.article-content li > ol {
+  margin-top: 0.5em;
+}
+
+.article-content strong {
+  color: var(--app-text);
+  font-weight: 600;
+}
+
+.article-content code {
+  border-radius: 4px;
+  background: var(--app-surface-muted);
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+}
+
+.article-content a {
+  color: var(--app-accent);
+  font-weight: 600;
+  text-underline-offset: 2px;
+}
+
+.article-content a:hover {
+  color: var(--app-accent-hover);
+}
+
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.article-content th,
+.article-content td {
+  border: 1px solid var(--app-border);
+  padding: 0.6em 0.75em;
+  text-align: left;
+}
+
+.article-content th {
+  background: var(--app-surface-muted);
+  color: var(--app-text);
+  font-weight: 600;
 }
