@@ -2,10 +2,10 @@ import type { FaqItem } from '../content/faq'
 
 interface FaqSectionProps {
   items: FaqItem[]
-  heading?: string
+  heading: string
 }
 
-export function FaqSection({ items, heading = 'Frequently asked questions' }: FaqSectionProps) {
+export function FaqSection({ items, heading }: FaqSectionProps) {
   return (
     <section
       id="faq"

@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom'
 import { FaqSection } from '../components/FaqSection'
 import { FeaturesSection } from '../components/FeaturesSection'
 import { GuidesTeaserSection } from '../components/GuidesTeaserSection'
@@ -7,39 +8,35 @@ import { IntroSection } from '../components/IntroSection'
 import { QrToolWidget } from '../components/QrToolWidget'
 import { SupportSection } from '../components/SupportSection'
 import { TopToolsSection } from '../components/TopToolsSection'
-import { WhatIsQrCode } from '../components/WhatIsQrCode'
+import { useLanguage } from '../i18n/LanguageContext'
 import { useRouteHead } from '../hooks/useRouteHead'
-import { homeFaq } from '../content/faq'
-import { homeRoute } from '../content/routes'
+import { findRouteMeta } from '../content/routes'
 
 export function HomePage() {
-  useRouteHead(homeRoute)
+  const { content } = useLanguage()
+  const { pathname } = useLocation()
+  useRouteHead(findRouteMeta(pathname)!)
 
   return (
     <>
       <Hero
         title={
           <>
-            QR Code Generator with a <span className="text-accent">Dinosaur Logo</span>
+            {content.home.heroTitlePrefix} <span className="text-accent">{content.home.heroTitleAccent}</span>
           </>
         }
-        subtitle="Free, custom QR codes with a dinosaur, monkey, tiger, or your own logo: cute, scannable, and ready in seconds."
+        subtitle={content.home.heroSubtitle}
       />
       <IntroSection>
-        This is a free <strong className="text-text">custom QR code generator</strong>{' '}
-        that turns any link, WiFi network, or contact card into a scannable code,
-        styled with a cute animal icon like a dinosaur, monkey, or tiger, or your own
-        logo. Every QR code is created entirely in your browser, downloads as PNG or
-        SVG, and works forever with no signup and no watermark.
+        {content.home.introPrefix} <strong className="text-text">{content.home.introBold}</strong> {content.home.introSuffix}
       </IntroSection>
-      <WhatIsQrCode />
 
       <QrToolWidget />
 
       <HowItWorksSection />
       <FeaturesSection />
       <TopToolsSection />
-      <FaqSection items={homeFaq} />
+      <FaqSection items={content.home.faq} heading={content.chrome.faqHeadingDefault} />
       <SupportSection />
       <GuidesTeaserSection />
     </>

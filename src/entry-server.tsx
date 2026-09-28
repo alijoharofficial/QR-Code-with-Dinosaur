@@ -3,15 +3,17 @@ import { StaticRouter } from 'react-router'
 import { AppShell } from './AppShell'
 import { buildHeadHtml, buildNotFoundHeadHtml } from './content/head'
 import { allRoutes, findRouteMeta } from './content/routes'
-import { findGuide } from './content/guides'
-import { findToolPage } from './content/toolPages'
-import { homeFaq } from './content/faq'
+import { findGuide, findToolPageConfig, getContent } from './content/registry'
+import { languages, defaultLanguageId } from './i18n/languages'
+import { localizedPath } from './i18n/routing'
 import { SITE_URL } from './content/site'
 
 export { allRoutes, SITE_URL }
 
 /** Any path guaranteed not to match a real route, so it falls through to
- * the app's own `*` catch-all (NotFoundPage) when rendered. */
+ * the app's own `*` catch-all (NotFoundPage) when rendered. A static host
+ * serves this one file for any unmatched path regardless of locale prefix,
+ * so it's always rendered in English. */
 const NOT_FOUND_MARKER_PATH = '/__404_prerender_marker__'
 
 /** Renders the 404 page to static HTML, for Vercel's automatic 404.html convention. */
@@ -21,7 +23,7 @@ export function renderNotFound() {
       <AppShell />
     </StaticRouter>,
   )
-  return { html, head: buildNotFoundHeadHtml() }
+  return { html, head: buildNotFoundHeadHtml(), lang: defaultLanguageId, rtl: false }
 }
 
 export function render(url: string) {
@@ -39,27 +41,32 @@ export function render(url: string) {
     throw new Error(`No route metadata registered for prerendered path: ${url}`)
   }
 
-  const isHome = url === '/'
-  const toolPage = findToolPage(url)
-  const guide = url.startsWith('/guides/') ? findGuide(url.slice('/guides/'.length)) : undefined
+  const { lang, canonicalPath } = route
+  const content = getContent(lang)
+  const isHome = canonicalPath === '/'
+  const toolConfig = findToolPageConfig(canonicalPath)
+  const guide = canonicalPath.startsWith('/guides/')
+    ? findGuide(lang, canonicalPath.slice('/guides/'.length))
+    : undefined
 
   const softwareApplication = isHome
-    ? {}
-    : toolPage
-      ? { name: toolPage.h1, description: toolPage.description }
+    ? { description: content.routes.home.description }
+    : toolConfig
+      ? { name: content.toolPages[toolConfig.id].h1, description: content.toolPages[toolConfig.id].description }
       : undefined
 
-  const faqItems = isHome ? homeFaq : toolPage ? toolPage.faq : undefined
+  const faqItems = isHome ? content.home.faq : toolConfig ? content.toolPages[toolConfig.id].faq : undefined
 
   const breadcrumbs = guide
     ? [
-        { name: 'Home', path: '/' },
-        { name: 'Guides', path: '/guides' },
-        { name: guide.meta.h1, path: url },
+        { name: content.chrome.navHome, path: localizedPath('/', lang) },
+        { name: content.chrome.navGuides, path: localizedPath('/guides', lang) },
+        { name: guide.copy.h1, path: url },
       ]
     : undefined
 
   const head = buildHeadHtml({ route, softwareApplication, faqItems, breadcrumbs })
+  const rtl = languages.find((l) => l.id === lang)?.rtl ?? false
 
-  return { html, head }
+  return { html, head, lang, rtl }
 }

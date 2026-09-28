@@ -1,3 +1,4 @@
+import { useLanguage } from '../i18n/LanguageContext'
 import type { Theme } from '../hooks/useTheme'
 
 interface ThemeToggleProps {
@@ -6,13 +7,14 @@ interface ThemeToggleProps {
 }
 
 export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
+  const { content } = useLanguage()
   const isDark = theme === 'dark'
 
   return (
     <button
       type="button"
       onClick={onToggle}
-      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={isDark ? content.chrome.switchToLightMode : content.chrome.switchToDarkMode}
       aria-pressed={isDark}
       className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-text transition-colors hover:border-accent hover:text-accent active:scale-95"
     >

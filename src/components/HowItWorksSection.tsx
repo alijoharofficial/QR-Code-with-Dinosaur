@@ -1,23 +1,8 @@
-const steps = [
-  {
-    title: 'Choose what it does',
-    body: 'Pick a type: a website link, WiFi network, contact card, menu, and more, and fill in the details.',
-  },
-  {
-    title: 'Pick an icon or logo',
-    body: 'Choose a built-in icon, including a dinosaur, monkey, or tiger, or upload your own logo image.',
-  },
-  {
-    title: 'Style it',
-    body: 'Adjust the colors, dot style, and shape until it matches your brand or the occasion.',
-  },
-  {
-    title: 'Download and scan',
-    body: 'Save it as a PNG or SVG, or copy it straight to your clipboard. It works immediately.',
-  },
-]
+import { useLanguage } from '../i18n/LanguageContext'
 
 export function HowItWorksSection() {
+  const { t, content } = useLanguage()
+
   return (
     <section
       className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6"
@@ -25,14 +10,14 @@ export function HowItWorksSection() {
     >
       <div className="rounded-3xl bg-surface-muted p-6 sm:p-10">
         <h2 id="how-it-works-heading" className="text-center text-2xl font-bold text-text">
-          How it works
+          {t('howItWorks')}
         </h2>
         <ol className="relative mt-10 grid gap-8 sm:grid-cols-4 sm:gap-4">
           <div
             aria-hidden="true"
             className="absolute left-0 right-0 top-4 hidden h-px bg-border sm:block"
           />
-          {steps.map((step, index) => (
+          {content.home.howItWorksSteps.map((step, index) => (
             <li key={step.title} className="relative text-center">
               <span className="relative z-10 mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-accent text-sm font-bold text-accent-contrast ring-4 ring-surface-muted">
                 {index + 1}

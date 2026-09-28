@@ -1,7 +1,11 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo } from 'react'
 import type { ReactNode } from 'react'
-import { defaultLanguageId, languages } from './languages'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { languages } from './languages'
 import { translations, type TranslationKey } from './translations'
+import { getLangFromPathname, localizedPath, stripLocalePrefix } from './routing'
+import { getContent } from '../content/registry'
+import type { PageContent } from '../content/pageContent'
 
 const STORAGE_KEY = 'qr-dino-language'
 
@@ -9,23 +13,22 @@ interface LanguageContextValue {
   languageId: string
   setLanguageId: (id: string) => void
   t: (key: TranslationKey) => string
+  content: PageContent
 }
 
 const LanguageContext = createContext<LanguageContextValue | null>(null)
 
-function readStoredLanguage(): string | null {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY)
-    return stored && languages.some((l) => l.id === stored) ? stored : null
-  } catch {
-    return null
-  }
-}
-
+/**
+ * The URL is the source of truth for the active language (each language has
+ * its own crawlable path, e.g. /es/about), not client state, so the server
+ * render and the first client render always agree. Switching languages
+ * navigates to the equivalent URL under the new locale prefix instead of
+ * just flipping an internal flag.
+ */
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [languageId, setLanguageIdState] = useState(
-    () => readStoredLanguage() ?? defaultLanguageId,
-  )
+  const location = useLocation()
+  const navigate = useNavigate()
+  const languageId = getLangFromPathname(location.pathname)
 
   useEffect(() => {
     const lang = languages.find((l) => l.id === languageId)
@@ -34,28 +37,27 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [languageId])
 
   const setLanguageId = (id: string) => {
-    setLanguageIdState(id)
     try {
       localStorage.setItem(STORAGE_KEY, id)
     } catch {
       // ignore write failures (private browsing, storage disabled, etc.)
     }
+    const unprefixed = stripLocalePrefix(location.pathname)
+    navigate(`${localizedPath(unprefixed, id)}${location.hash}`)
   }
 
   const value = useMemo<LanguageContextValue>(() => {
-    const dict = translations[languageId] ?? translations[defaultLanguageId]
+    const dict = translations[languageId] ?? translations.en
     return {
       languageId,
       setLanguageId,
-      t: (key: TranslationKey) => dict[key] ?? translations[defaultLanguageId][key],
+      t: (key: TranslationKey) => dict[key] ?? translations.en[key],
+      content: getContent(languageId),
     }
-  }, [languageId])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [languageId, location.pathname, location.hash])
 
-  return (
-    <LanguageContext.Provider value={value}>
-      {children}
-    </LanguageContext.Provider>
-  )
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
 }
 
 export function useLanguage() {
@@ -63,3 +65,5 @@ export function useLanguage() {
   if (!ctx) throw new Error('useLanguage must be used within a LanguageProvider')
   return ctx
 }
+
+export { languages }
