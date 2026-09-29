@@ -31,7 +31,12 @@ export function ToolVariantPage() {
     <>
       <Hero title={copy.h1} subtitle={copy.subtitle} />
 
-      <QrToolWidget {...config.preset} />
+      {/* Keyed by tool id: without this, navigating between two tool-variant
+          pages (e.g. dinosaur -> WiFi) reuses the same QrToolWidget instance,
+          so only the surrounding copy (Hero, FAQ) updates while the widget's
+          own state (QR type, icon, form fields) stays stuck on whatever was
+          selected before, ignoring the new page's preset entirely. */}
+      <QrToolWidget key={config.id} {...config.preset} />
 
       <section className="mx-auto w-full max-w-2xl px-4 pb-4 sm:px-6">
         <div className="space-y-4 text-base leading-relaxed text-muted">

@@ -44,13 +44,13 @@ function FooterNeedAHand() {
     colorTheme,
     dotStyle,
     qrShape,
-    size: 96,
+    size: 72,
   })
 
   return (
     <div className="flex items-center gap-4">
       <div className="shrink-0 rounded-xl bg-white p-2 shadow-sm">
-        <div ref={containerRef} className="h-16 w-16 [&_svg]:block" />
+        <div ref={containerRef} className="h-[72px] w-[72px] [&_svg]:block [&_svg]:h-full [&_svg]:w-full" />
       </div>
       <div>
         <h3 className="text-sm font-semibold text-text">{t('supportHeading')}</h3>
